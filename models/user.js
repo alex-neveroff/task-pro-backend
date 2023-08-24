@@ -2,7 +2,7 @@ import { Schema, model } from "mongoose";
 import Joi from "joi";
 import { handleMongooseError, validateAtUpdate } from "../middlewars/index.js";
 
-const themeList = ["Dark", "Light", "Violet"];
+const themeList = ["dark", "light", "violet"];
 
 const userSchema = new Schema(
   {
@@ -20,11 +20,14 @@ const userSchema = new Schema(
       unique: true,
     },
     token: String,
-    avatar: String,
+    avatar: {
+      type: String,
+      default: "",
+    },
     theme: {
       type: String,
       enum: themeList,
-      default: "Dark",
+      default: "light",
     },
   },
   { versionKey: false, timestamps: true }
