@@ -1,7 +1,7 @@
 import express from "express";
 import { validateBody } from "../decorators/index.js";
 import { isEmptyBody, authenticate } from "../middlewars/index.js";
-import { loginSchema, registerSchema } from "../models/users.js";
+import { loginSchema, registerSchema, themeSchema } from "../models/users.js";
 import { authController } from "../controllers/index.js";
 const router = express.Router();
 
@@ -17,6 +17,13 @@ router.post(
   isEmptyBody,
   validateBody(loginSchema),
   authController.login
+);
+
+router.patch(
+  "/",
+  authenticate,
+  validateBody(themeSchema),
+  authController.changeTheme
 );
 
 router.get("/current", authenticate, authController.getCurrent);

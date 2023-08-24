@@ -15,16 +15,23 @@ const register = async (req, res) => {
     throw HttpError(409, "Email in use");
   }
   const hashPassword = await bcrypt.hash(password, 10);
-  const verificationToken = nanoid();
+
   const newUser = await User.create({
     ...req.body,
     password: hashPassword,
-    verificationToken,
   });
+  const payload = {
+    id: newUser._id,
+  };
+  const token = jwt.sign(payload, JWT_SECRET, { expiresIn: "24h" });
+  await User.findByIdAndUpdate(newUser._id, { token });
 
   res.status(201).json({
+    token,
     user: {
+      name: newUser.name,
       email: newUser.email,
+      theme: newUser.theme,
     },
   });
 };
@@ -42,22 +49,33 @@ const login = async (req, res) => {
   const payload = {
     id: user._id,
   };
-  const token = jwt.sign(payload, JWT_SECRET, { expiresIn: "48h" });
+  const token = jwt.sign(payload, JWT_SECRET, { expiresIn: "24h" });
   await User.findByIdAndUpdate(user._id, { token });
 
   res.json({
     token: token,
     user: {
+      name: user.name,
       email: user.email,
+      theme: user.theme,
     },
   });
 };
 
 const getCurrent = async (req, res) => {
-  const { email } = req.user;
+  const { name, email, theme } = req.user;
   res.json({
+    name,
     email,
+    theme,
   });
+};
+
+const changeTheme = async (req, res) => {
+  const { _id, name, email } = req.user;
+  const { theme } = req.body;
+  await User.findByIdAndUpdate(_id, { theme });
+  res.json({ name, email, theme });
 };
 
 const logout = async (req, res) => {
@@ -70,5 +88,6 @@ export default {
   register: controllerWrapper(register),
   login: controllerWrapper(login),
   getCurrent: controllerWrapper(getCurrent),
+  changeTheme: controllerWrapper(changeTheme),
   logout: controllerWrapper(logout),
 };
