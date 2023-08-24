@@ -1,4 +1,4 @@
-import { User } from "../models/users.js";
+import { User } from "../models/user.js";
 import { HttpError } from "./index.js";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";

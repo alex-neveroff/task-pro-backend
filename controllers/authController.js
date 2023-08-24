@@ -1,4 +1,4 @@
-import { User } from "../models/users.js";
+import { User } from "../models/user.js";
 import { HttpError } from "../middlewars/index.js";
 import { controllerWrapper } from "../decorators/index.js";
 import bcrypt from "bcryptjs";
@@ -32,6 +32,7 @@ const register = async (req, res) => {
       name: newUser.name,
       email: newUser.email,
       theme: newUser.theme,
+      avatar: newUser.avatar,
     },
   });
 };
@@ -58,6 +59,7 @@ const login = async (req, res) => {
       name: user.name,
       email: user.email,
       theme: user.theme,
+      avatar: user.avatar,
     },
   });
 };
@@ -68,14 +70,15 @@ const getCurrent = async (req, res) => {
     name,
     email,
     theme,
+    avatar,
   });
 };
 
 const changeTheme = async (req, res) => {
-  const { _id, name, email } = req.user;
+  const { _id, email } = req.user;
   const { theme } = req.body;
   await User.findByIdAndUpdate(_id, { theme });
-  res.json({ name, email, theme });
+  res.json({ email, theme });
 };
 
 const logout = async (req, res) => {
