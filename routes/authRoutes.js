@@ -19,6 +19,8 @@ router.post(
   authController.login
 );
 
+router.get("/current", authenticate, authController.getCurrent);
+
 router.patch(
   "/",
   authenticate,
@@ -26,7 +28,14 @@ router.patch(
   authController.changeTheme
 );
 
-router.get("/current", authenticate, authController.getCurrent);
+// router.put(
+//   "/update",
+//   authenticate,
+//   upload.single("avatar"),
+//   authController.updateUser
+// );
+
+// router.post("/help", authenticate, helpController);
 
 router.post("/logout", authenticate, authController.logout);
 
