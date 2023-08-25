@@ -98,4 +98,24 @@ export const themeSchema = Joi.object({
     }),
 });
 
+export const updateUserSchema = Joi.object({
+  name: Joi.string().min(3).max(32).pattern(nameReg).messages({
+    "string.base": "Field name must be a string",
+    "string.min": "Field name must be at least 3 characters long",
+    "string.max": "Field name must be no more than 32 characters long",
+    "string.pattern.base": "Field name not valid",
+  }),
+  email: Joi.string().pattern(emailReg).messages({
+    "string.base": "Field email must be a string",
+    "string.pattern.base": "Field email not valid",
+  }),
+  password: Joi.string().min(6).max(32).pattern(passwordReg).messages({
+    "string.base": "Field password must be a string",
+    "string.min": "Field name must be at least 6 characters long",
+    "string.max": "Field name must be no more than 32 characters long",
+    "string.pattern.base": "Field password not valid",
+  }),
+  theme: Joi.string().valid(...themeList),
+});
+
 export const User = model("user", userSchema);
