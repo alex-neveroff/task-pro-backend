@@ -8,41 +8,38 @@ import {
   updateUserSchema,
 } from "../models/user.js";
 import { authController } from "../controllers/index.js";
-const router = express.Router();
+const authRouter = express.Router();
 
-router.post(
+authRouter.post(
   "/register",
   isEmptyBody,
   validateBody(registerSchema),
   authController.register
 );
 
-router.post(
+authRouter.post(
   "/login",
   isEmptyBody,
   validateBody(loginSchema),
   authController.login
 );
 
-router.get("/current", authenticate, authController.getCurrent);
+authRouter.get("/current", authenticate, authController.getCurrent);
 
-router.patch(
+authRouter.patch(
   "/theme",
   authenticate,
   validateBody(themeSchema),
   authController.changeTheme
 );
 
-router.put(
+authRouter.put(
   "/update",
   authenticate,
   uploadCloud.single("avatar"),
   validateBody(updateUserSchema),
   authController.updateUser
 );
+authRouter.post("/logout", authenticate, authController.logout);
 
-// router.post("/help", authenticate, helpController);
-
-router.post("/logout", authenticate, authController.logout);
-
-export default router;
+export default authRouter;

@@ -2,7 +2,7 @@ import express from "express";
 import logger from "morgan";
 import cors from "cors";
 import dotenv from "dotenv";
-import authRouter from "./routes/authRoutes.js";
+import { authRouter, helpRouter } from "./routes/index.js";
 import swaggerUi from "swagger-ui-express";
 import swaggerDocument from "./swagger.json" assert { type: "json" };
 
@@ -16,6 +16,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/users", authRouter);
+app.use("/help", helpRouter);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use((req, res) => {
