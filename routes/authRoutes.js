@@ -6,7 +6,7 @@ import {
   registerSchema,
   themeSchema,
   updateUserSchema,
-} from "../models/user.js";
+} from "../schemas/index.js";
 import { authController } from "../controllers/index.js";
 const authRouter = express.Router();
 

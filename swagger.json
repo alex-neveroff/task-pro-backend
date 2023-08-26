@@ -746,7 +746,7 @@
           },
           "comment": {
             "type": "string",
-            "description": "User's comment. It must contain minimum 6 characters and maximum 256",
+            "description": "User's comment. It must contain minimum 6 characters and maximum 500",
             "example": "Hello, I have a question for you."
           }
         }

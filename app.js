@@ -2,7 +2,13 @@ import express from "express";
 import logger from "morgan";
 import cors from "cors";
 import dotenv from "dotenv";
-import { authRouter, helpRouter } from "./routes/index.js";
+import {
+  authRouter,
+  helpRouter,
+  boardsRouter,
+  columnsRouter,
+  cardsRouter,
+} from "./routes/index.js";
 import swaggerUi from "swagger-ui-express";
 import swaggerDocument from "./swagger.json" assert { type: "json" };
 
@@ -17,6 +23,9 @@ app.use(express.json());
 
 app.use("/users", authRouter);
 app.use("/help", helpRouter);
+app.use("/boards", boardsRouter);
+app.use("/columns", columnsRouter);
+app.use("/cards", cardsRouter);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use((req, res) => {

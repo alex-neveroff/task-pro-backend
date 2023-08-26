@@ -1,4 +1,4 @@
-import { User } from "../models/user.js";
+import { User } from "../models/index.js";
 import { HttpError, uploadAvatar } from "../middlewars/index.js";
 import { controllerWrapper } from "../decorators/index.js";
 import bcrypt from "bcryptjs";
