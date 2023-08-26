@@ -10,7 +10,7 @@ const cardsRouter = express.Router();
 cardsRouter.post("/", authenticate, cardsController.addCard);
 cardsRouter.put("/:id", authenticate, isValidId, cardsController.updateCard);
 cardsRouter.patch(
-  "/:id/transfer",
+  "/:id/moving",
   authenticate,
   isValidId,
   cardsController.moveCard

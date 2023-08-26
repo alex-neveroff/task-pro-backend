@@ -13,7 +13,7 @@ columnsRouter.put(
   columnsController.updateColumn
 );
 columnsRouter.patch(
-  "/:id/transfer",
+  "/:id/moving",
   authenticate,
   isValidId,
   columnsController.moveColumn
