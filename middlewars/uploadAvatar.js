@@ -2,7 +2,6 @@ import { v2 as cloudinary } from "cloudinary";
 
 const uploadAvatar = async (req, res) => {
   const { _id, email } = req.user;
-  // const filePath = req.file.path;
   const fileBuffer = req.file.buffer;
   const fileName = `${_id}_${email}`;
 
