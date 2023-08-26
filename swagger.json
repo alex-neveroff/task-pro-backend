@@ -2,8 +2,8 @@
   "openapi": "3.0.1",
   "info": {
     "version": "2.0.2",
-    "title": "Swagger Task Pro",
-    "description": "Showing off Task Pro work"
+    "title": "Swagger Task-pro Project",
+    "description": "Routes of Task-pro backend"
   },
   "consumes": ["application/json"],
   "produces": ["application/json"],
@@ -15,6 +15,22 @@
     {
       "name": "Users",
       "description": "Users endpoints"
+    },
+    {
+      "name": "Help-email",
+      "description": "Email (help-letter) endpoint"
+    },
+    {
+      "name": "Boards",
+      "description": "Boards endpoints"
+    },
+    {
+      "name": "Columns",
+      "description": "Columns endpoints"
+    },
+    {
+      "name": "Cards",
+      "description": "Cards endpoints"
     }
   ],
 
@@ -270,6 +286,101 @@
         }
       }
     },
+    "/users/update": {
+      "put": {
+        "tags": ["Users"],
+        "summary": "User updating",
+        "parameters": [],
+        "security": [{ "Bearer": [] }],
+        "requestBody": {
+          "description": "Update user's object (multipart/form-data)",
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "avatar": {
+                    "type": "file",
+                    "format": "binary",
+                    "description": "User's avatar",
+                    "example": "avatar.jpg"
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "User's name",
+                    "example": "User"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "User's email",
+                    "example": "user@email.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "User's password",
+                    "example": "user12345"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation, user updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateUserResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request (invalid request body)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorBadRequestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Not authorized (email or password is wrong)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorUnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorNotFoundResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorServerResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/users/logout": {
       "post": {
         "tags": ["Users"],
@@ -279,6 +390,78 @@
         "responses": {
           "204": {
             "description": "Logout successful, No Content"
+          },
+          "401": {
+            "description": "Not authorized (email or password is wrong)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorUnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorNotFoundResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorServerResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/help": {
+      "post": {
+        "tags": ["Help-email"],
+        "summary": "User's help letter",
+        "parameters": [],
+        "security": [{ "Bearer": [] }],
+        "requestBody": {
+          "description": "Help's object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HelpRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Help successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HelpResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request (invalid request body)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorBadRequestResponse"
+                }
+              }
+            }
           },
           "401": {
             "description": "Not authorized (email or password is wrong)",
@@ -323,7 +506,7 @@
         "properties": {
           "name": {
             "type": "string",
-            "description": "User's name. It must contain only Latin letters; may contain space, numbers, signs, letters in different case",
+            "description": "User's name. It must contain only Latin letters; may contain space, numbers, signs, letters in different case. It must contain minimum 3 characters and maximum 32",
             "example": "User"
           },
           "email": {
@@ -334,8 +517,8 @@
           },
           "password": {
             "type": "string",
-            "description": "User's password. It must contain only Latin letters; may contain numbers, signs, letters in different case; does not contain a space.",
-            "example": "1234567"
+            "description": "User's password. It must contain only Latin letters; may contain numbers, signs, letters in different case; does not contain a space. . It must contain minimum 6 characters and maximum 32",
+            "example": "user12345"
           }
         }
       },
@@ -354,7 +537,7 @@
               "name": {
                 "type": "string",
                 "description": "User's name",
-                "example": "user"
+                "example": "User"
               },
               "email": {
                 "type": "string",
@@ -366,7 +549,7 @@
                 "type": "string",
                 "description": "User's theme",
                 "enum": ["dark", "violet", "light"],
-                "example": "dark"
+                "example": "light"
               },
               "avatar": {
                 "type": "string",
@@ -390,8 +573,8 @@
           },
           "password": {
             "type": "string",
-            "description": "User's password. It must contain only Latin letters, at least one uppercase, lowercase letter and a number; does not contain a space",
-            "example": "1234567"
+            "description": "User's password. It must contain only Latin letters, at least one uppercase, lowercase letter and a number; does not contain a space. . It must contain minimum 6 characters and maximum 32",
+            "example": "user12345"
           }
         }
       },
@@ -493,6 +676,88 @@
             "description": "User's theme",
             "enum": ["dark", "violet", "light"],
             "example": "dark"
+          }
+        }
+      },
+
+      "UpdateUserRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "User's name. It must contain only Latin letters; may contain numbers, signs, letters in different case. . It must contain minimum 3 characters and maximum 32",
+            "example": "User"
+          },
+          "email": {
+            "type": "string",
+            "description": "User's email. It must contain only Latin letters; may include numbers, letters in different case",
+            "format": "email",
+            "example": "user@email.com"
+          },
+          "password": {
+            "type": "string",
+            "description": "User's password. It must contain only Latin letters; may contain numbers, signs, letters in different case; does not contain a space. . It must contain minimum 6 characters and maximum 32",
+            "example": "user12345"
+          },
+          "avatar": {
+            "type": "string",
+            "description": "User's avatar",
+            "example": ""
+          }
+        }
+      },
+      "UpdateUserResponse": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "User's name. It must contain only Latin letters; may contain numbers, signs, letters in different case",
+            "example": "User"
+          },
+          "email": {
+            "type": "string",
+            "description": "User's email",
+            "format": "email",
+            "example": "user@email.com"
+          },
+          "theme": {
+            "type": "string",
+            "description": "User's theme",
+            "enum": ["dark", "violet", "light"],
+            "example": "dark"
+          },
+          "avatar": {
+            "type": "string",
+            "description": "User's avatar",
+            "example": ""
+          }
+        }
+      },
+
+      "HelpRequest": {
+        "type": "object",
+        "required": ["email", "comment"],
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "User's email.  It must contain only Latin letters; may include numbers, letters in different case",
+            "format": "email",
+            "example": "user@email.com"
+          },
+          "comment": {
+            "type": "string",
+            "description": "User's comment. It must contain minimum 6 characters and maximum 256",
+            "example": "Hello, I have a question for you."
+          }
+        }
+      },
+      "HelpResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Email sending message",
+            "example": "The message has been sent successfully"
           }
         }
       },
