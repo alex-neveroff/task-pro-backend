@@ -1,5 +1,6 @@
 import { controllerWrapper } from "../decorators/index.js";
 import { sendEmail } from "../middlewars/index.js";
+import { Message } from "../models/index.js";
 
 const helpEmail = async (req, res) => {
   const { name } = req.user;
@@ -15,12 +16,10 @@ const helpEmail = async (req, res) => {
     <p>Yours respectfully,</p><p>${name}</p> 
     `,
   };
-
   await sendEmail(newEmail);
+  await Message.create(req.body);
 
-  res.json({
-    message: "The message has been sent successfully",
-  });
+  res.json(req.body);
 };
 
 export default {

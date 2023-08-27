@@ -754,10 +754,16 @@
       "HelpResponse": {
         "type": "object",
         "properties": {
-          "message": {
+          "email": {
             "type": "string",
-            "description": "Email sending message",
-            "example": "The message has been sent successfully"
+            "description": "User's email",
+            "format": "email",
+            "example": "user@email.com"
+          },
+          "comment": {
+            "type": "string",
+            "description": "User's comment",
+            "example": "Hello, I have a question for you."
           }
         }
       },
