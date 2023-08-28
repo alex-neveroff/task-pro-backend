@@ -168,7 +168,7 @@
     "/users/current": {
       "get": {
         "tags": ["Users"],
-        "summary": "Get current user",
+        "summary": "Current user",
         "parameters": [],
         "security": [{ "Bearer": [] }],
         "responses": {
@@ -178,77 +178,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/CurrentUserResponse"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Not authorized (email or password is wrong)",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/errorUnauthorizedResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/errorNotFoundResponse"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/errorServerResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/users/theme": {
-      "patch": {
-        "tags": ["Users"],
-        "summary": "User theme",
-        "parameters": [],
-        "security": [{ "Bearer": [] }],
-        "requestBody": {
-          "description": "User theme updating",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateThemeRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful operation, theme updated",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UpdateThemeResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request (invalid request body)",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/errorBadRequestResponse"
                 }
               }
             }
@@ -424,6 +353,148 @@
         }
       }
     },
+    "/users/theme": {
+      "patch": {
+        "tags": ["Users"],
+        "summary": "User theme",
+        "parameters": [],
+        "security": [{ "Bearer": [] }],
+        "requestBody": {
+          "description": "User theme updating",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateThemeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation, theme updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateThemeResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request (invalid request body)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorBadRequestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Not authorized (email or password is wrong)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorUnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorNotFoundResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorServerResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/display": {
+      "patch": {
+        "tags": ["Users"],
+        "summary": "User display",
+        "parameters": [],
+        "security": [{ "Bearer": [] }],
+        "requestBody": {
+          "description": "User display updating",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateDisplayRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation, display updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateDisplayResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request (invalid request body)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorBadRequestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Not authorized (email or password is wrong)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorUnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorNotFoundResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorServerResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
 
     "/help": {
       "post": {
@@ -557,6 +628,24 @@
                 "example": ""
               }
             }
+          },
+          "session": {
+            "type": "object",
+            "properties": {
+              "display": {
+                "type": "string",
+                "description": "User's display",
+                "enum": [
+                  "desktop",
+                  "desktop-2x",
+                  "tablet",
+                  "tablet-2x",
+                  "mob",
+                  "mob-2x"
+                ],
+                "example": "desktop"
+              }
+            }
           }
         }
       },
@@ -613,6 +702,24 @@
                 "example": ""
               }
             }
+          },
+          "session": {
+            "type": "object",
+            "properties": {
+              "display": {
+                "type": "string",
+                "description": "User's display",
+                "enum": [
+                  "desktop",
+                  "desktop-2x",
+                  "tablet",
+                  "tablet-2x",
+                  "mob",
+                  "mob-2x"
+                ],
+                "example": "desktop"
+              }
+            }
           }
         }
       },
@@ -665,17 +772,49 @@
       "UpdateThemeResponse": {
         "type": "object",
         "properties": {
-          "email": {
-            "type": "string",
-            "description": "User's email",
-            "format": "email",
-            "example": "user@email.com"
-          },
           "theme": {
             "type": "string",
             "description": "User's theme",
             "enum": ["dark", "violet", "light"],
             "example": "dark"
+          }
+        }
+      },
+
+      "UpdateDisplayRequest": {
+        "type": "object",
+        "required": ["display"],
+        "properties": {
+          "display": {
+            "type": "string",
+            "description": "User's display. Display field must be one of the next value - desktop, desktop-2x, tablet, tablet-2x, mob, mob-2x",
+            "enum": [
+              "desktop",
+              "desktop-2x",
+              "tablet",
+              "tablet-2x",
+              "mob",
+              "mob-2x"
+            ],
+            "example": "desktop"
+          }
+        }
+      },
+      "UpdateDisplayResponse": {
+        "type": "object",
+        "properties": {
+          "display": {
+            "type": "string",
+            "description": "User's display",
+            "enum": [
+              "desktop",
+              "desktop-2x",
+              "tablet",
+              "tablet-2x",
+              "mob",
+              "mob-2x"
+            ],
+            "example": "desktop"
           }
         }
       },

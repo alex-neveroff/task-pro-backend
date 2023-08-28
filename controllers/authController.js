@@ -110,10 +110,10 @@ const updateUser = async (req, res) => {
 };
 
 const changeTheme = async (req, res) => {
-  const { _id, email } = req.user;
+  const { _id } = req.user;
   const { theme } = req.body;
   await User.findByIdAndUpdate(_id, { theme });
-  res.json({ email, theme });
+  res.json({ theme });
 };
 
 const changeDisplay = async (req, res) => {
