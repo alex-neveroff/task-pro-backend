@@ -4,9 +4,6 @@ export const handleMongooseError = (error, data, next) => {
 };
 
 export const validateAtUpdate = function (next) {
-  const updatedFields = Object.keys(this.getUpdate());
-  if (!updatedFields.includes("verificationToken")) {
-    this.options.runValidators = true;
-  }
+  this.options.runValidators = true;
   next();
 };
