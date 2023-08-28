@@ -6,6 +6,7 @@ import {
   registerSchema,
   themeSchema,
   updateUserSchema,
+  displaySchema,
 } from "../schemas/index.js";
 import { authController } from "../controllers/index.js";
 const authRouter = express.Router();
@@ -26,13 +27,6 @@ authRouter.post(
 
 authRouter.get("/current", authenticate, authController.getCurrent);
 
-authRouter.patch(
-  "/theme",
-  authenticate,
-  validateBody(themeSchema),
-  authController.changeTheme
-);
-
 authRouter.put(
   "/update",
   authenticate,
@@ -40,6 +34,21 @@ authRouter.put(
   validateBody(updateUserSchema),
   authController.updateUser
 );
+
+authRouter.patch(
+  "/theme",
+  authenticate,
+  validateBody(themeSchema),
+  authController.changeTheme
+);
+
+authRouter.patch(
+  "/display",
+  authenticate,
+  validateBody(displaySchema),
+  authController.changeDisplay
+);
+
 authRouter.post("/logout", authenticate, authController.logout);
 
 export default authRouter;
