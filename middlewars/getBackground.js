@@ -8,15 +8,11 @@ cloudinary.config({
   api_secret: CLOUDINARY_SECRET,
 });
 
-const getBackground = async () => {
-  const bcgName = "tree";
-  const display = "tablet";
-  const publicId = `backgrounds/${bcgName}-${display}`;
-
+const getBackground = async (background, display) => {
+  const publicId = `backgrounds/${background}-${display}`;
   const backgroundUrl = cloudinary.url(publicId, {
     secure: true,
   });
-
   return backgroundUrl;
 };
 

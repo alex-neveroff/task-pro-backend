@@ -1,7 +1,7 @@
-import { controllerWrapper } from "../decorators/index.js";
-import HttpError from "../middlewars/HttpError.js";
-import { Board, Column, Card } from "../models/index.js";
 import { Types } from "mongoose";
+import { controllerWrapper } from "../decorators/index.js";
+import { HttpError, getBackground } from "../middlewars/index.js";
+import { Board, Column, Card, Session } from "../models/index.js";
 
 const getAllBoards = async (req, res) => {
   const { _id: owner } = req.user;
@@ -88,21 +88,39 @@ const getOneBoard = async (req, res) => {
 };
 
 const addBoard = async (req, res) => {
-  const { _id: owner } = req.user;
-  const result = await Board.create({ ...req.body, owner });
+  const { _id: owner, token } = req.user;
+  const { background } = req.body;
+  const session = await Session.findOne({ token }, "display");
+  const display = session.display;
+  let backgroundURL = "";
+  if (background) {
+    backgroundURL = await getBackground(background, display);
+  }
+
+  const result = await Board.create({ ...req.body, backgroundURL, owner });
   res.status(201).json(result);
 };
 
 const updateBoard = async (req, res) => {
-  console.log(req.params);
   const { boardId } = req.params;
+  const { token } = req.user;
+  const { background: newbackground } = req.body;
+  const board = await Board.findById(boardId, "background");
+  const oldBackground = board.background;
+  const session = await Session.findOne({ token }, "display");
+  const display = session.display;
+  let backgroundURL = "";
+
+  if (newbackground && newbackground !== oldBackground) {
+    backgroundURL = await getBackground(newbackground, display);
+  }
+
   const result = await Board.findByIdAndUpdate(
     boardId,
-    req.body,
+    { ...req.body, backgroundURL },
     {
       new: true,
-    },
-    "-createdAt -updatedAt"
+    }
   );
   if (!result) {
     throw HttpError(404);
