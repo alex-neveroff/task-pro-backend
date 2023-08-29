@@ -1,6 +1,6 @@
 export const themeList = ["dark", "light", "violet"];
 
-export const priorityList = ["withoutt", "low", "medium", "high"];
+export const priorityList = ["without", "low", "medium", "high"];
 
 export const iconsList = [
   "icon-board-icon-1",
