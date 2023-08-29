@@ -17,7 +17,7 @@
       "description": "Users endpoints"
     },
     {
-      "name": "Help-email",
+      "name": "Email \"Need help\"",
       "description": "Email (help-letter) endpoint"
     },
     {
@@ -497,7 +497,7 @@
     },
     "/help": {
       "post": {
-        "tags": ["Help-email"],
+        "tags": ["Email \"Need help\""],
         "summary": "User's help letter",
         "parameters": [],
         "security": [{ "Bearer": [] }],
@@ -549,6 +549,824 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/errorNotFoundResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorServerResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/boards": {
+      "get": {
+        "tags": ["Boards"],
+        "summary": "All boards list",
+        "parameters": [],
+        "security": [{ "Bearer": [] }],
+        "responses": {
+          "200": {
+            "description": "Successful operation, boards list is got",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetAllBoardsResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Not authorized (email or password is wrong)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorUnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorNotFoundResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorServerResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Boards"],
+        "summary": "Add new board",
+        "parameters": [],
+        "security": [{ "Bearer": [] }],
+        "requestBody": {
+          "description": "Board's object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddBoardRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful operation, new board added",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddBoardResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request (invalid request body)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorBadRequestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Not authorized (email or password is wrong)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorUnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorNotFoundResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorServerResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/boards/{id}": {
+      "get": {
+        "tags": ["Boards"],
+        "summary": "Get board by id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "example": "64d360ea78fe376e4981199f",
+            "schema": {
+              "minimum": 1
+            }
+          }
+        ],
+        "security": [{ "Bearer": [] }],
+        "responses": {
+          "200": {
+            "description": "Successful operation, board by id get",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetBoardByIdResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Not authorized (email or password is wrong)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorUnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorNotFoundBoardResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorServerResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Boards"],
+        "summary": "Update board",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "example": "64d360ea78fe376e4981199f",
+            "schema": {
+              "minimum": 1
+            }
+          }
+        ],
+        "security": [{ "Bearer": [] }],
+        "requestBody": {
+          "description": "Board's object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateBoardRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation, board updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateBoardResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request (invalid request body)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorBadRequestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Not authorized (email or password is wrong)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorUnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorNotFoundBoardResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorServerResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Boards"],
+        "summary": "Delete board",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "example": "64d360ea78fe376e4981569f",
+            "schema": {
+              "minimum": 1
+            }
+          }
+        ],
+        "security": [{ "Bearer": [] }],
+        "responses": {
+          "200": {
+            "description": "Successful operation, board is deleted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteBoardResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Not authorized (email or password is wrong)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorUnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorNotFoundBoardResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorServerResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/columns": {
+      "post": {
+        "tags": ["Columns"],
+        "summary": "Add new column",
+        "parameters": [],
+        "security": [{ "Bearer": [] }],
+        "requestBody": {
+          "description": "Column's object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddColumnRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful operation, new column added",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddColumnResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request (invalid request body)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorBadRequestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Not authorized (email or password is wrong)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorUnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorNotFoundResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorServerResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/columns/{id}": {
+      "put": {
+        "tags": ["Columns"],
+        "summary": "Update column",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "example": "64d360ea78fe376e4981199f",
+            "schema": {
+              "minimum": 1
+            }
+          }
+        ],
+        "security": [{ "Bearer": [] }],
+        "requestBody": {
+          "description": "Column's object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateColumnRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation, column updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateColumnResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request (invalid request body)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorBadRequestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Not authorized (email or password is wrong)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorUnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorNotFoundColumnResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorServerResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Columns"],
+        "summary": "Delete column",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "example": "64d360ea78fe376e4981569f",
+            "schema": {
+              "minimum": 1
+            }
+          }
+        ],
+        "security": [{ "Bearer": [] }],
+        "responses": {
+          "200": {
+            "description": "Successful operation, column is deleted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteColumnResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Not authorized (email or password is wrong)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorUnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorNotFoundColumnResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorServerResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/cards": {
+      "post": {
+        "tags": ["Cards"],
+        "summary": "Add new card",
+        "parameters": [],
+        "security": [{ "Bearer": [] }],
+        "requestBody": {
+          "description": "Card's object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddCardRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful operation, new card added",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddCardResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request (invalid request body)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorBadRequestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Not authorized (email or password is wrong)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorUnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorNotFoundResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorServerResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cards/{id}": {
+      "put": {
+        "tags": ["Cards"],
+        "summary": "Update card",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "example": "64d360ea78fe376e4981199f",
+            "schema": {
+              "minimum": 1
+            }
+          }
+        ],
+        "security": [{ "Bearer": [] }],
+        "requestBody": {
+          "description": "Card's object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCardRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation, Card updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateCardResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request (invalid request body)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorBadRequestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Not authorized (email or password is wrong)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorUnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorNotFoundCardResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorServerResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": ["Cards"],
+        "summary": "Moving card to another column",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "example": "64d360ea78fe376e4981199f",
+            "schema": {
+              "minimum": 1
+            }
+          }
+        ],
+        "security": [{ "Bearer": [] }],
+        "requestBody": {
+          "description": "Card's object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MoveCardRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation, column is transferred",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MoveCardResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request (invalid request body)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorBadRequestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Not authorized (email or password is wrong)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorUnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorNotFoundCardResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorServerResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "delete": {
+        "tags": ["Cards"],
+        "summary": "Delete card",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "example": "64d360ea78fe376e4981569f",
+            "schema": {
+              "minimum": 1
+            }
+          }
+        ],
+        "security": [{ "Bearer": [] }],
+        "responses": {
+          "200": {
+            "description": "Successful operation, column is deleted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteColumnResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Not authorized (email or password is wrong)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorUnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorNotFoundCardResponse"
                 }
               }
             }
@@ -925,47 +1743,39 @@
               "type": "string",
               "description": "Board's icon",
               "enum": [
-                "icon-colors",
-                "icon-container",
-                "icon-hexagon",
-                "icon-lightning",
-                "icon-loading",
-                "icon-project",
-                "icon-star",
-                "icon-puzzle-piece"
+                "icon-board-icon-1",
+                "icon-board-icon-2",
+                "icon-board-icon-3",
+                "icon-board-icon-4",
+                "icon-board-icon-5",
+                "icon-board-icon-6",
+                "icon-board-icon-7",
+                "icon-board-icon-8"
               ],
-              "example": "icon-hexagon"
+              "example": "icon-board-icon-1"
             },
             "background": {
               "type": "string",
               "description": "Board's background",
               "enum": [
-                "airBalloon",
-                "blue",
-                "cappadocia",
-                "flowers",
-                "gorge",
-                "greens",
-                "moon",
-                "mountains",
-                "rocksAndSea",
-                "sea",
-                "semiMoon",
-                "trailer",
                 "tree",
-                "yacht",
-                "violetSphere",
-                null
+                "triler",
+                "spheres",
+                "semimoon",
+                "sea",
+                "rocks",
+                "mountains",
+                "leaves",
+                "fullmoon",
+                "flowers",
+                "clouds",
+                "cave",
+                "boat",
+                "balloonFar",
+                "balloonClose",
+                ""
               ],
-              "example": "greens"
-            },
-            "columnOrder": {
-              "type": "array",
-              "description": "Column order",
-              "example": [
-                "64d5585cf10982f0832226f4",
-                "64d5585cf10982f0832226f4"
-              ]
+              "example": "mountains"
             },
             "owner": {
               "type": "object",
@@ -1029,14 +1839,14 @@
             "type": "string",
             "description": "Board's icon",
             "enum": [
-              "icon-colors",
-              "icon-container",
-              "icon-hexagon",
-              "icon-lightning",
-              "icon-loading",
-              "icon-project",
-              "icon-star",
-              "icon-puzzle-piece"
+              "icon-board-icon-1",
+              "icon-board-icon-2",
+              "icon-board-icon-3",
+              "icon-board-icon-4",
+              "icon-board-icon-5",
+              "icon-board-icon-6",
+              "icon-board-icon-7",
+              "icon-board-icon-8"
             ],
             "example": "icon-hexagon"
           },
@@ -1044,29 +1854,24 @@
             "type": "string",
             "description": "Board's background",
             "enum": [
-              null,
-              "airBalloon",
-              "blue",
-              "cappadocia",
-              "flowers",
-              "gorge",
-              "greens",
-              "moon",
-              "mountains",
-              "rocksAndSea",
-              "sea",
-              "semiMoon",
-              "trailer",
               "tree",
-              "yacht",
-              "violetSphere"
+              "triler",
+              "spheres",
+              "semimoon",
+              "sea",
+              "rocks",
+              "mountains",
+              "leaves",
+              "fullmoon",
+              "flowers",
+              "clouds",
+              "cave",
+              "boat",
+              "balloonFar",
+              "balloonClose",
+              ""
             ],
-            "example": "greens"
-          },
-          "columnOrder": {
-            "type": "array",
-            "description": "Column order",
-            "example": ["64d52e77846f3f325f35b8f0"]
+            "example": "mountains"
           },
           "owner": {
             "type": "object",
@@ -1108,51 +1913,45 @@
                 "_id": "64d5585cf10982f0832226f4",
                 "title": "2222222",
                 "board": "64d52e77846f3f325f35b8f0",
-                "taskOrder": [
-                  "64d8907409b4e55ec6255990",
-                  "64d8907809b4e55ec6255994",
-                  "64d8901109b4e55ec6255983",
-                  "64d88e0d09b4e55ec625596c"
-                ],
                 "createdAt": "2023-08-10T21:36:28.801Z",
                 "updatedAt": "2023-08-13T08:13:04.104Z",
-                "tasks": [
+                "cards": [
                   {
                     "_id": "64d8901109b4e55ec6255983",
-                    "title": "Task 1",
-                    "description": "This is the description of task 1",
+                    "title": "First card",
+                    "description": "This is the description of card",
                     "priority": "without",
-                    "deadline": null,
+                    "deadline": "",
                     "column": "64d5585cf10982f0832226f4",
                     "createdAt": "2023-08-13T08:10:57.245Z",
                     "updatedAt": "2023-08-13T08:13:04.154Z"
                   },
                   {
                     "_id": "64d8907409b4e55ec6255990",
-                    "title": "Task 2",
-                    "description": "This is the description of task 2",
+                    "title": "Second card",
+                    "description": "This is the description of card",
                     "priority": "low",
-                    "deadline": "21/12/2022",
+                    "deadline": "",
                     "column": "64d5585cf10982f0832226f4",
                     "createdAt": "2023-08-13T08:12:36.110Z",
                     "updatedAt": "2023-08-13T08:12:36.110Z"
                   },
                   {
                     "_id": "64d88e0d09b4e55ec625596c",
-                    "title": "Task 3",
-                    "description": "This is the description of task 3",
+                    "title": "Third card",
+                    "description": "This is the description of card",
                     "priority": "medium",
-                    "deadline": "13/04/2023",
+                    "deadline": "",
                     "column": "64d5585cf10982f0832226f4",
                     "createdAt": "2023-08-13T08:12:40.524Z",
                     "updatedAt": "2023-08-13T08:12:40.524Z"
                   },
                   {
                     "_id": "64d8907809b4e55ec6255994",
-                    "title": "Task 4",
-                    "description": "This is the description of task 4",
+                    "title": "Next card",
+                    "description": "This is the description of card",
                     "priority": "high",
-                    "deadline": null,
+                    "deadline": "",
                     "column": "64d5585cf10982f0832226f4",
                     "createdAt": "2023-08-13T08:12:40.524Z",
                     "updatedAt": "2023-08-13T08:12:40.524Z"
@@ -1176,39 +1975,39 @@
             "type": "string",
             "description": "Board's icon",
             "enum": [
-              "icon-colors",
-              "icon-container",
-              "icon-hexagon",
-              "icon-lightning",
-              "icon-loading",
-              "icon-project",
-              "icon-star",
-              "icon-puzzle-piece"
+              "icon-board-icon-1",
+              "icon-board-icon-2",
+              "icon-board-icon-3",
+              "icon-board-icon-4",
+              "icon-board-icon-5",
+              "icon-board-icon-6",
+              "icon-board-icon-7",
+              "icon-board-icon-8"
             ],
-            "example": "icon-hexagon"
+            "example": "icon-board-icon-3"
           },
           "background": {
             "type": "string",
             "description": "Board's background",
             "enum": [
-              "airBalloon",
-              "blue",
-              "cappadocia",
-              "flowers",
-              "gorge",
-              "greens",
-              "moon",
-              "mountains",
-              "rocksAndSea",
-              "sea",
-              "semiMoon",
-              "trailer",
               "tree",
-              "yacht",
-              "violetSphere",
-              null
+              "triler",
+              "spheres",
+              "semimoon",
+              "sea",
+              "rocks",
+              "mountains",
+              "leaves",
+              "fullmoon",
+              "flowers",
+              "clouds",
+              "cave",
+              "boat",
+              "balloonFar",
+              "balloonClose",
+              ""
             ],
-            "example": "greens"
+            "example": "mountains"
           }
         },
         "required": ["title"]
@@ -1229,17 +2028,17 @@
           "icon": {
             "type": "string",
             "description": "Board's icon",
-            "example": "icon-hexagon"
+            "example": "icon-board-icon-3"
           },
           "background": {
             "type": "string",
             "description": "Board's background",
-            "example": "sea"
+            "example": "mountains"
           },
-          "columnOrder": {
-            "type": "array",
-            "description": "Column order",
-            "example": []
+          "backgroundURL": {
+            "type": "string",
+            "description": "Board's background URL from Cloudinary",
+            "example": "https://res.cloudinary.com/task-pro/image/upload/v1692957357/backgrounds/mountains-desktop.jpg"
           },
           "owner": {
             "type": "string",
@@ -1271,39 +2070,39 @@
             "type": "string",
             "description": "Board's icon",
             "enum": [
-              "icon-colors",
-              "icon-container",
-              "icon-hexagon",
-              "icon-lightning",
-              "icon-loading",
-              "icon-project",
-              "icon-star",
-              "icon-puzzle-piece"
+              "icon-board-icon-1",
+              "icon-board-icon-2",
+              "icon-board-icon-3",
+              "icon-board-icon-4",
+              "icon-board-icon-5",
+              "icon-board-icon-6",
+              "icon-board-icon-7",
+              "icon-board-icon-8"
             ],
-            "example": "icon-hexagon"
+            "example": "icon-board-icon-2"
           },
           "background": {
             "type": "string",
             "description": "Board's background",
             "enum": [
-              "airBalloon",
-              "blue",
-              "cappadocia",
-              "flowers",
-              "gorge",
-              "greens",
-              "moon",
-              "mountains",
-              "rocksAndSea",
-              "sea",
-              "semiMoon",
-              "trailer",
               "tree",
-              "yacht",
-              "violetSphere",
-              null
+              "triler",
+              "spheres",
+              "semimoon",
+              "sea",
+              "rocks",
+              "mountains",
+              "leaves",
+              "fullmoon",
+              "flowers",
+              "clouds",
+              "cave",
+              "boat",
+              "balloonFar",
+              "balloonClose",
+              ""
             ],
-            "example": "greens"
+            "example": "boat"
           }
         }
       },
@@ -1324,26 +2123,26 @@
             "type": "string",
             "description": "Board's icon",
             "enum": [
-              "icon-colors",
-              "icon-container",
-              "icon-hexagon",
-              "icon-lightning",
-              "icon-loading",
-              "icon-project",
-              "icon-star",
-              "icon-puzzle-piece"
+              "icon-board-icon-1",
+              "icon-board-icon-2",
+              "icon-board-icon-3",
+              "icon-board-icon-4",
+              "icon-board-icon-5",
+              "icon-board-icon-6",
+              "icon-board-icon-7",
+              "icon-board-icon-8"
             ],
-            "example": "icon-hexagon"
+            "example": "icon-board-icon-2"
           },
           "background": {
             "type": "string",
             "description": "Board's background title",
-            "example": "greens"
+            "example": "boat"
           },
-          "columnOrder": {
-            "type": "array",
-            "description": "Column order",
-            "example": []
+          "backgroundURL": {
+            "type": "string",
+            "description": "Board's background URL from Cloudinary",
+            "example": "https://res.cloudinary.com/task-pro/image/upload/v1692957353/backgrounds/boat-desktop.jpg"
           },
           "owner": {
             "type": "string",
@@ -1366,11 +2165,6 @@
       "DeleteBoardResponse": {
         "type": "object",
         "properties": {
-          "message": {
-            "type": "string",
-            "description": "Board id",
-            "example": "Board {id} deleted successfully"
-          },
           "data": {
             "type": "object",
             "properties": {
@@ -1388,26 +2182,21 @@
                 "type": "string",
                 "description": "Board's icon",
                 "enum": [
-                  "icon-colors",
-                  "icon-container",
-                  "icon-hexagon",
-                  "icon-lightning",
-                  "icon-loading",
-                  "icon-project",
-                  "icon-star",
-                  "icon-puzzle-piece"
+                  "icon-board-icon-1",
+                  "icon-board-icon-2",
+                  "icon-board-icon-3",
+                  "icon-board-icon-4",
+                  "icon-board-icon-5",
+                  "icon-board-icon-6",
+                  "icon-board-icon-7",
+                  "icon-board-icon-8"
                 ],
-                "example": "icon-hexagon"
+                "example": "icon-board-icon-3"
               },
               "background": {
                 "type": "string",
                 "description": "Board's background title",
-                "example": "moon"
-              },
-              "columnOrder": {
-                "type": "array",
-                "description": "Column order",
-                "example": []
+                "example": "fullmoon"
               },
               "owner": {
                 "type": "string",
@@ -1463,11 +2252,6 @@
             "description": "Board id",
             "example": "64ed80b3c498b1c02dede12d"
           },
-          "taskOrder": {
-            "type": "array",
-            "description": "Task order",
-            "example": []
-          },
           "createdAt": {
             "type": "string",
             "format": "date-time",
@@ -1510,11 +2294,6 @@
             "description": "Board id",
             "example": "64ed80b3c498b1c02dede12d"
           },
-          "taskOrder": {
-            "type": "array",
-            "description": "Task order",
-            "example": []
-          },
           "createdAt": {
             "type": "string",
             "format": "date-time",
@@ -1554,11 +2333,6 @@
                 "description": "Board id",
                 "example": "64ed80b3c498b1c02dede12d"
               },
-              "taskOrder": {
-                "type": "array",
-                "description": "Task order",
-                "example": []
-              },
               "createdAt": {
                 "type": "string",
                 "format": "date-time",
@@ -1579,24 +2353,24 @@
         "properties": {
           "title": {
             "type": "string",
-            "description": "Task's title",
-            "example": "First Task"
+            "description": "Card's title",
+            "example": "First Card"
           },
           "description": {
             "type": "string",
-            "description": "Task's description",
-            "example": "Description of the task"
+            "description": "Card's description",
+            "example": "Description of the card"
           },
           "priority": {
             "type": "string",
-            "description": "User's theme",
+            "description": "Card's priority",
             "enum": ["without", "low", "medium", "high"],
             "example": "low"
           },
           "deadline": {
             "type": "string",
-            "description": "Task's deadline",
-            "example": "10/08/2023"
+            "description": "Card's deadline",
+            "example": "06/09/2023"
           },
           "column": {
             "type": "string",
@@ -1611,34 +2385,29 @@
         "properties": {
           "_id": {
             "type": "string",
-            "description": "Task`s id",
+            "description": "Card`s id",
             "example": "64ed80b3c498b1c02dede12d"
           },
           "title": {
             "type": "string",
-            "description": "Task's title",
-            "example": "First Task"
+            "description": "Card's title",
+            "example": "First Card"
           },
           "description": {
             "type": "string",
-            "description": "Task's description",
-            "example": "Description of the task"
+            "description": "Card's description",
+            "example": "Description of the card"
           },
           "priority": {
             "type": "string",
-            "description": "User's theme",
+            "description": "Card's priority",
             "enum": ["without", "low", "medium", "high"],
             "example": "low"
           },
           "deadline": {
             "type": "string",
-            "description": "Task's deadline",
-            "example": "10/08/2023"
-          },
-          "board": {
-            "type": "string",
-            "description": "Board id",
-            "example": "64ed80b3c498b1c02dede12d"
+            "description": "Card's deadline",
+            "example": "06/09/2023"
           },
           "column": {
             "type": "string",
@@ -1663,24 +2432,24 @@
         "properties": {
           "title": {
             "type": "string",
-            "description": "Task's title",
-            "example": "First Task"
+            "description": "Card's title",
+            "example": "First Card"
           },
           "description": {
             "type": "string",
-            "description": "Task's description",
-            "example": "Description of the task"
+            "description": "Card's description",
+            "example": "Description of the card"
           },
           "priority": {
             "type": "string",
-            "description": "User's theme",
+            "description": "Card's priority",
             "enum": ["without", "low", "medium", "high"],
             "example": "low"
           },
           "deadline": {
             "type": "string",
-            "description": "Task's deadline",
-            "example": "10/08/2023"
+            "description": "Card's deadline",
+            "example": "06/09/2023"
           }
         }
       },
@@ -1689,34 +2458,29 @@
         "properties": {
           "_id": {
             "type": "string",
-            "description": "Task`s id",
+            "description": "Card`s id",
             "example": "64ed80b3c498b1c02dede12d"
           },
           "title": {
             "type": "string",
-            "description": "Task's title",
-            "example": "First Task"
+            "description": "Card's title",
+            "example": "First Card"
           },
           "description": {
             "type": "string",
-            "description": "Task's description",
-            "example": "Description of the task"
+            "description": "Card's description",
+            "example": "Description of the card"
           },
           "priority": {
             "type": "string",
-            "description": "User's theme",
+            "description": "Card's priority",
             "enum": ["without", "low", "medium", "high"],
             "example": "low"
           },
           "deadline": {
             "type": "string",
-            "description": "Task's deadline",
-            "example": "10/08/2023"
-          },
-          "board": {
-            "type": "string",
-            "description": "Board id",
-            "example": "64ed80b3c498b1c02dede12d"
+            "description": "Card's deadline",
+            "example": "06/09/2023"
           },
           "column": {
             "type": "string",
@@ -1739,52 +2503,20 @@
       "MoveCardRequest": {
         "type": "object",
         "properties": {
-          "source": {
-            "type": "object",
-            "properties": {
-              "index": {
-                "type": "number",
-                "description": "Task index",
-                "example": 0
-              },
-              "droppableId": {
-                "type": "string",
-                "description": "Task id",
-                "example": "64ed80b3c498b1c02dede12d"
-              }
-            },
-            "required": ["droppableId"]
-          },
-          "destination": {
-            "type": "object",
-            "properties": {
-              "index": {
-                "type": "number",
-                "description": "Task index",
-                "example": 1
-              },
-              "droppableId": {
-                "type": "string",
-                "description": "Task id",
-                "example": "64ed80b3c498b1c02dede12d"
-              }
-            },
-            "required": ["index", "droppableId"]
+          "column": {
+            "type": "string",
+            "description": "Destination column id",
+            "example": "64ed80b3c498b1c02dede12d"
           }
         }
       },
       "MoveCardResponse": {
         "type": "object",
         "properties": {
-          "board": {
+          "column": {
             "type": "string",
-            "description": "Board id",
+            "description": "Updated column id",
             "example": "64ed80b3c498b1c02dede12d"
-          },
-          "message": {
-            "type": "string",
-            "description": "Board's title",
-            "example": "Task position has been changed to {index} in column {id}"
           }
         }
       },
@@ -1792,45 +2524,46 @@
       "DeleteCardResponse": {
         "type": "object",
         "properties": {
-          "message": {
+          "_id": {
             "type": "string",
-            "description": "Task id",
-            "example": "Task {id} deleted successfully"
+            "description": "Card`s id",
+            "example": "64ed80b3c498b1c02dede12d"
           },
-          "data": {
-            "type": "object",
-            "properties": {
-              "_id": {
-                "type": "string",
-                "description": "Task id",
-                "example": "64ed80b3c498b1c02dede12d"
-              },
-              "title": {
-                "type": "string",
-                "description": "Task's title",
-                "example": "First Task"
-              },
-              "column": {
-                "type": "string",
-                "description": "Column id",
-                "example": "64ed80b3c498b1c02dede12d"
-              },
-              "taskOrder": {
-                "type": "array",
-                "description": "Task order",
-                "example": []
-              },
-              "createdAt": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2023-08-09T18:30:47.840Z"
-              },
-              "updatedAt": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2023-08-09T18:31:22.235Z"
-              }
-            }
+          "title": {
+            "type": "string",
+            "description": "Card's title",
+            "example": "First Card"
+          },
+          "description": {
+            "type": "string",
+            "description": "Card's description",
+            "example": "Description of the card"
+          },
+          "priority": {
+            "type": "string",
+            "description": "Card's priority",
+            "enum": ["without", "low", "medium", "high"],
+            "example": "low"
+          },
+          "deadline": {
+            "type": "string",
+            "description": "Card's deadline",
+            "example": "06/09/2023"
+          },
+          "column": {
+            "type": "string",
+            "description": "Column id",
+            "example": "64ed80b3c498b1c02dede12d"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2023-08-09T18:30:47.840Z"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2023-08-09T18:31:22.235Z"
           }
         }
       },
@@ -1861,7 +2594,7 @@
           "message": {
             "type": "string",
             "description": "Error message",
-            "example": "Task {id} not found"
+            "example": "Card {id} not found"
           }
         }
       },
