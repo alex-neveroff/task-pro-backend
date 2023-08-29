@@ -2,18 +2,27 @@ import express from "express";
 import { validateBody } from "../decorators/index.js";
 import { authenticate, isValidId } from "../middlewars/index.js";
 import { boardsController } from "../controllers/index.js";
-// Импортиорвать соответстветствующие схемы и дописать их в каждый роутер в "validateBody(схема)";
+import { addBoardSchema, updateBoardSchema } from "../schemas/index.js";
 
 const boardsRouter = express.Router();
+boardsRouter.use(authenticate);
 
-boardsRouter.get("/", authenticate, boardsController.getAllBoards);
-boardsRouter.get("/:id", authenticate, isValidId, boardsController.getOneBoard);
-boardsRouter.post("/", authenticate, boardsController.addBoard);
-boardsRouter.put("/:id", authenticate, isValidId, boardsController.updateBoard);
+boardsRouter.get("/", boardsController.getAllBoards);
+boardsRouter.get(
+  "/:boardId",
+  isValidId("boardId"),
+  boardsController.getOneBoard
+);
+boardsRouter.post("/", validateBody(addBoardSchema), boardsController.addBoard);
+boardsRouter.put(
+  "/:boardId",
+  isValidId("boardId"),
+  validateBody(updateBoardSchema),
+  boardsController.updateBoard
+);
 boardsRouter.delete(
-  "/:id",
-  authenticate,
-  isValidId,
+  "/:boardId",
+  isValidId("boardId"),
   boardsController.deleteBoard
 );
 

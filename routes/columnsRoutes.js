@@ -1,27 +1,31 @@
 import express from "express";
+import { validateBody } from "../decorators/index.js";
 import { authenticate, isValidId } from "../middlewars/index.js";
 import { columnsController } from "../controllers/index.js";
-// Импортиорвать соответстветствующие схемы и дописать их в каждый роутер в "validateBody(схема)";
+import { addColumnSchema, updateColumnSchema } from "../schemas/index.js";
 
 const columnsRouter = express.Router();
+columnsRouter.use(authenticate);
 
-columnsRouter.post("/", authenticate, columnsController.addColumn);
+columnsRouter.get(
+  "/:columnId",
+  isValidId("columnId"),
+  columnsController.getColumn
+);
+columnsRouter.post(
+  "/",
+  validateBody(addColumnSchema),
+  columnsController.addColumn
+);
 columnsRouter.put(
-  "/:id",
-  authenticate,
-  isValidId,
+  "/:columnId",
+  isValidId("columnId"),
+  validateBody(updateColumnSchema),
   columnsController.updateColumn
 );
-columnsRouter.patch(
-  "/:id/moving",
-  authenticate,
-  isValidId,
-  columnsController.moveColumn
-);
 columnsRouter.delete(
-  "/:id",
-  authenticate,
-  isValidId,
+  "/:columnId",
+  isValidId("columnId"),
   columnsController.deleteColumn
 );
 

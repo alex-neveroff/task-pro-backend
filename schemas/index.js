@@ -10,3 +10,4 @@ export { addColumnSchema } from "./columnSchema.js";
 export { updateColumnSchema } from "./columnSchema.js";
 export { addCardSchema } from "./cardSchema.js";
 export { updateCardSchema } from "./cardSchema.js";
+export { moveCardSchema } from "./cardSchema.js";
