@@ -9,7 +9,7 @@ const getColumn = async (req, res) => {
   if (!column) {
     throw HttpError(404);
   }
-  const cards = await Card.find({ owner: column._id });
+  const cards = await Card.find({ column: columnId });
   if (!cards) {
     throw HttpError(404);
   }
@@ -38,7 +38,7 @@ const updateColumn = async (req, res) => {
 const deleteColumn = async (req, res) => {
   const { columnId } = req.params;
 
-  const deleteCards = await Card.deleteMany({ owner: { $in: columnId } });
+  const deleteCards = await Card.deleteMany({ column: { $in: columnId } });
   const deleteCurrentColumn = await Column.findByIdAndDelete(columnId);
   if (!deleteCurrentColumn || !deleteCards) {
     throw HttpError(404);
