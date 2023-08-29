@@ -7,7 +7,11 @@ import { addColumnSchema, updateColumnSchema } from "../schemas/index.js";
 const columnsRouter = express.Router();
 columnsRouter.use(authenticate);
 
-columnsRouter.get("/:columnId", columnsController.getColumn);
+columnsRouter.get(
+  "/:columnId",
+  isValidId("columnId"),
+  columnsController.getColumn
+);
 columnsRouter.post(
   "/",
   validateBody(addColumnSchema),

@@ -5,12 +5,12 @@ const columnSchema = new Schema(
   {
     title: {
       type: String,
-      required: true,
+      required: [true, "Title for the column is required"],
     },
-    owner: {
+    board: {
       type: Schema.Types.ObjectId,
+      required: [true, "Board assignment for the column is required"],
       ref: "board",
-      required: true,
     },
   },
   { versionKey: false, timestamps: true }

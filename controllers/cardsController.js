@@ -12,8 +12,7 @@ const getCards = async (req, res) => {
 };
 
 const addCard = async (req, res) => {
-  const { columnId } = req.params;
-  const result = await Card.create({ ...req.body, owner: columnId });
+  const result = await Card.create({ ...req.body });
   res.status(201).json(result);
 };
 
@@ -27,11 +26,17 @@ const updateCard = async (req, res) => {
 };
 
 const moveCard = async (req, res) => {
-  const { cardId, columnId } = req.params;
-  const result = await Card.findOneAndUpdate(cardId, {
-    owner: columnId,
-    new: true,
-  });
+  const { cardId } = req.params;
+  const { column: columnId } = req.body;
+  const result = await Card.findOneAndUpdate(
+    { cardId },
+    {
+      column: columnId,
+    },
+    {
+      new: true,
+    }
+  );
   if (!result) {
     throw HttpError(404);
   }

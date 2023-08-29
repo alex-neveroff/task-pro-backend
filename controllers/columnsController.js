@@ -20,8 +20,7 @@ const getColumn = async (req, res) => {
 };
 
 const addColumn = async (req, res) => {
-  const { boardId } = req.body;
-  const result = await Column.create({ ...req.body, owner: boardId });
+  const result = await Column.create({ ...req.body });
   res.status(201).json({ result });
 };
 
@@ -38,11 +37,16 @@ const updateColumn = async (req, res) => {
 
 const deleteColumn = async (req, res) => {
   const { columnId } = req.params;
-  const result = await Column.findByIdAndDelete(columnId);
-  if (!result) {
+
+  const deleteCards = await Card.deleteMany({ owner: { $in: columnId } });
+  const deleteCurrentColumn = await Column.findByIdAndDelete(columnId);
+  if (!deleteCurrentColumn || !deleteCards) {
     throw HttpError(404);
   }
-  res.json(result);
+  res.json({
+    Column: deleteCurrentColumn,
+    Cards: deleteCards,
+  });
 };
 
 export default {

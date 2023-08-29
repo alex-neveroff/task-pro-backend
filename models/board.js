@@ -6,7 +6,7 @@ const boardSchema = new Schema(
   {
     title: {
       type: String,
-      required: true,
+      required: [true, "Title for the board is required"],
     },
     background: {
       type: String,

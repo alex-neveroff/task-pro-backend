@@ -6,11 +6,11 @@ const cardSchema = new Schema(
   {
     title: {
       type: String,
-      required: true,
+      required: [true, "Title for the card is required"],
     },
     description: {
       type: String,
-      required: true,
+      required: [true, "Description for the card is required"],
     },
     priority: {
       type: String,
@@ -20,10 +20,10 @@ const cardSchema = new Schema(
     deadline: {
       type: Date,
     },
-    owner: {
+    column: {
       type: Schema.Types.ObjectId,
       ref: "column",
-      required: true,
+      required: [true, "Column assignment for the card is required"],
     },
   },
   { versionKey: false, timestamps: true }
