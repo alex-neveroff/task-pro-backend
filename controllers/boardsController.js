@@ -74,6 +74,7 @@ const getOneBoard = async (req, res) => {
         title: { $first: "$title" },
         icon: { $first: "$icon" },
         background: { $first: "$background" },
+        backgroundURL: { $first: "$backgroundURL" },
         owner: { $first: "$owner" },
         columns: { $push: "$columns" },
       },
@@ -112,10 +113,10 @@ const updateBoard = async (req, res) => {
 const deleteBoard = async (req, res) => {
   const { boardId } = req.params;
 
-  const columns = await Column.find({ owner: boardId });
+  const columns = await Column.find({ board: boardId });
   const ArrColumnIds = columns.map((column) => column._id);
-  const deleteCards = await Card.deleteMany({ owner: { $in: ArrColumnIds } });
-  const deleteColumns = await Column.deleteMany({ owner: boardId });
+  const deleteCards = await Card.deleteMany({ column: { $in: ArrColumnIds } });
+  const deleteColumns = await Column.deleteMany({ board: boardId });
   const deleteCurrentBoard = await Board.findByIdAndDelete(boardId);
 
   if (!deleteCurrentBoard || !deleteColumns || !deleteCards) {
@@ -123,7 +124,7 @@ const deleteBoard = async (req, res) => {
   }
   res.json({
     Board: deleteCurrentBoard,
-    Columns: deleteColumns,
+    Columns: columns,
     Cards: deleteCards,
   });
 };
