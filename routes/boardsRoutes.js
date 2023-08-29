@@ -8,14 +8,22 @@ const boardsRouter = express.Router();
 boardsRouter.use(authenticate);
 
 boardsRouter.get("/", boardsController.getAllBoards);
-boardsRouter.get("/:boardId", isValidId, boardsController.getOneBoard);
+boardsRouter.get(
+  "/:boardId",
+  isValidId("boardId"),
+  boardsController.getOneBoard
+);
 boardsRouter.post("/", validateBody(addBoardSchema), boardsController.addBoard);
 boardsRouter.put(
   "/:boardId",
-  isValidId,
+  isValidId("boardId"),
   validateBody(updateBoardSchema),
   boardsController.updateBoard
 );
-boardsRouter.delete("/:boardId", isValidId, boardsController.deleteBoard);
+boardsRouter.delete(
+  "/:boardId",
+  isValidId("boardId"),
+  boardsController.deleteBoard
+);
 
 export default boardsRouter;

@@ -4,29 +4,25 @@ import { authenticate, isValidId } from "../middlewars/index.js";
 import { columnsController } from "../controllers/index.js";
 import { addColumnSchema, updateColumnSchema } from "../schemas/index.js";
 
-// Импортиорвать соответстветствующие схемы и дописать их в каждый роутер в "validateBody(схема)";
-
 const columnsRouter = express.Router();
 columnsRouter.use(authenticate);
 
 columnsRouter.get("/:columnId", columnsController.getColumn);
 columnsRouter.post(
-  "/:boardId",
+  "/",
   validateBody(addColumnSchema),
   columnsController.addColumn
 );
 columnsRouter.put(
   "/:columnId",
-  isValidId,
+  isValidId("columnId"),
   validateBody(updateColumnSchema),
   columnsController.updateColumn
 );
-columnsRouter.delete("/:columnId", isValidId, columnsController.deleteColumn);
-
-// columnsRouter.patch(
-//   "/:columnId/moving",
-//   isValidId,
-//   columnsController.moveColumn
-// );
+columnsRouter.delete(
+  "/:columnId",
+  isValidId("columnId"),
+  columnsController.deleteColumn
+);
 
 export default columnsRouter;

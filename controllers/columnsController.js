@@ -20,7 +20,7 @@ const getColumn = async (req, res) => {
 };
 
 const addColumn = async (req, res) => {
-  const { boardId } = req.papams;
+  const { boardId } = req.body;
   const result = await Column.create({ ...req.body, owner: boardId });
   res.status(201).json({ result });
 };
@@ -36,8 +36,6 @@ const updateColumn = async (req, res) => {
   res.json({ result });
 };
 
-// const moveColumn = async (req, res) => {};
-
 const deleteColumn = async (req, res) => {
   const { columnId } = req.params;
   const result = await Column.findByIdAndDelete(columnId);
@@ -52,5 +50,4 @@ export default {
   addColumn: controllerWrapper(addColumn),
   updateColumn: controllerWrapper(updateColumn),
   deleteColumn: controllerWrapper(deleteColumn),
-  // moveColumn: controllerWrapper(moveColumn),
 };

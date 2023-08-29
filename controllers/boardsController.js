@@ -1,6 +1,6 @@
 import { controllerWrapper } from "../decorators/index.js";
 import HttpError from "../middlewars/HttpError.js";
-import { Board, Column } from "../models/index.js";
+import { Board, Column, Card } from "../models/index.js";
 
 const getAllBoards = async (req, res) => {
   const { _id: owner } = req.user;
@@ -46,10 +46,16 @@ const addBoard = async (req, res) => {
 };
 
 const updateBoard = async (req, res) => {
+  console.log(req.params);
   const { boardId } = req.params;
-  const result = await Board.findByIdAndUpdate(boardId, req.body, {
-    new: true,
-  });
+  const result = await Board.findByIdAndUpdate(
+    boardId,
+    req.body,
+    {
+      new: true,
+    },
+    "-createdAt -updatedAt"
+  );
   if (!result) {
     throw HttpError(404);
   }
@@ -58,16 +64,21 @@ const updateBoard = async (req, res) => {
 
 const deleteBoard = async (req, res) => {
   const { boardId } = req.params;
-  const deleteBoard = await Board.findByIdAndDelete(boardId);
-  const columns = await Column.findById({ owner: boardId });
-  const deleteColumn = await Column.deleteMany({ owner: boardId });
-  const ArrColumnIds = columns.map((column) => column._id);
-  const deleteCard = await Card.deleteMany({ owner: ArrColumnIds });
 
-  if (!deleteBoard || !deleteColumn || !deleteCard || !columns) {
+  const columns = await Column.find({ owner: boardId });
+  const ArrColumnIds = columns.map((column) => column._id);
+  const deleteCard = await Card.deleteMany({ owner: { $in: ArrColumnIds } });
+  const deleteColumn = await Column.deleteMany({ owner: boardId });
+  const deleteBoard = await Board.findByIdAndDelete(boardId);
+
+  if (!deleteBoard || !deleteColumn || !deleteCard) {
     throw HttpError(404);
   }
-  res.json({ deleteBoard, deleteColumn, deleteCard });
+  res.json({
+    Board: deleteBoard,
+    Columns: deleteColumn,
+    Cards: deleteCard,
+  });
 };
 
 export default {

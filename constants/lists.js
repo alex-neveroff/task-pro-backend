@@ -29,6 +29,8 @@ export const backgroundsList = [
   "boat",
   "balloonFar",
   "balloonClose",
+  "",
+];
 
 export const displayList = [
   "desktop",
@@ -37,5 +39,4 @@ export const displayList = [
   "tablet-2x",
   "mob",
   "mob-2x",
-
 ];

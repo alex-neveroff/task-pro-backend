@@ -4,9 +4,6 @@ import { authenticate, isValidId } from "../middlewars/index.js";
 import { cardsController } from "../controllers/index.js";
 import { addCardSchema, updateCardSchema } from "../schemas/index.js";
 
-// Импортиорвать соответстветствующие схемы и дописать
-// их в каждый роутер в "validateBody(схема)";
-
 const cardsRouter = express.Router();
 cardsRouter.use(authenticate);
 
@@ -18,15 +15,15 @@ cardsRouter.post(
 );
 cardsRouter.put(
   "/:cardId",
-  isValidId,
+  isValidId("cardId"),
   validateBody(updateCardSchema),
   cardsController.updateCard
 );
 cardsRouter.patch(
   "/:cardId/owner/:columnId",
-  isValidId,
+  isValidId("cardId"),
   cardsController.moveCard
 );
-cardsRouter.delete("/:cardId", isValidId, cardsController.deleteCard);
+cardsRouter.delete("/:cardId", isValidId("cardId"), cardsController.deleteCard);
 
 export default cardsRouter;

@@ -1,11 +1,11 @@
 import { isValidObjectId } from "mongoose";
 import { HttpError } from "./index.js";
 
-const isValidId = (req, res, next) => {
-  const { id } = req.params;
+const isValidId = (id) => (req, res, next) => {
+  const checkedId = req.params[id];
 
-  if (!isValidObjectId(id)) {
-    next(HttpError(400, `${id} is not valid id`));
+  if (!isValidObjectId(checkedId)) {
+    next(HttpError(400, `${checkedId} is not valid id`));
   }
   next();
 };
