@@ -1,4 +1,5 @@
 export const themeList = ["dark", "light", "violet"];
+
 export const priorityList = ["withoutt", "low", "medium", "high"];
 
 export const iconsList = [
@@ -28,4 +29,13 @@ export const backgroundsList = [
   "boat",
   "balloonFar",
   "balloonClose",
+
+export const displayList = [
+  "desktop",
+  "desktop-2x",
+  "tablet",
+  "tablet-2x",
+  "mob",
+  "mob-2x",
+
 ];

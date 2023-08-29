@@ -506,7 +506,7 @@
         "properties": {
           "name": {
             "type": "string",
-            "description": "User's name. It must contain only Latin letters; may contain space, numbers, signs, letters in different case. It must contain minimum 3 characters and maximum 32",
+            "description": "User's name. It must contain only Latin letters; may contain space, numbers, signs, letters in different case. It must contain minimum 2 characters and maximum 32",
             "example": "User"
           },
           "email": {
@@ -517,7 +517,7 @@
           },
           "password": {
             "type": "string",
-            "description": "User's password. It must contain only Latin letters; may contain numbers, signs, letters in different case; does not contain a space. . It must contain minimum 6 characters and maximum 32",
+            "description": "User's password. It must contain only Latin letters; may contain numbers, signs, letters in different case; does not contain a space. . It must contain minimum 8 characters and maximum 64",
             "example": "user12345"
           }
         }
@@ -573,7 +573,7 @@
           },
           "password": {
             "type": "string",
-            "description": "User's password. It must contain only Latin letters, at least one uppercase, lowercase letter and a number; does not contain a space. . It must contain minimum 6 characters and maximum 32",
+            "description": "User's password. It must contain only Latin letters, at least one uppercase, lowercase letter and a number; does not contain a space. . It must contain minimum 8 characters and maximum 64",
             "example": "user12345"
           }
         }
@@ -685,7 +685,7 @@
         "properties": {
           "name": {
             "type": "string",
-            "description": "User's name. It must contain only Latin letters; may contain numbers, signs, letters in different case. . It must contain minimum 3 characters and maximum 32",
+            "description": "User's name. It must contain only Latin letters; may contain numbers, signs, letters in different case. . It must contain minimum 2 characters and maximum 32",
             "example": "User"
           },
           "email": {
@@ -696,7 +696,7 @@
           },
           "password": {
             "type": "string",
-            "description": "User's password. It must contain only Latin letters; may contain numbers, signs, letters in different case; does not contain a space. . It must contain minimum 6 characters and maximum 32",
+            "description": "User's password. It must contain only Latin letters; may contain numbers, signs, letters in different case; does not contain a space. . It must contain minimum 8 characters and maximum 64",
             "example": "user12345"
           },
           "avatar": {
@@ -711,7 +711,7 @@
         "properties": {
           "name": {
             "type": "string",
-            "description": "User's name. It must contain only Latin letters; may contain numbers, signs, letters in different case",
+            "description": "User's name.",
             "example": "User"
           },
           "email": {
@@ -754,10 +754,16 @@
       "HelpResponse": {
         "type": "object",
         "properties": {
-          "message": {
+          "email": {
             "type": "string",
-            "description": "Email sending message",
-            "example": "The message has been sent successfully"
+            "description": "User's email",
+            "format": "email",
+            "example": "user@email.com"
+          },
+          "comment": {
+            "type": "string",
+            "description": "User's comment",
+            "example": "Hello, I have a question for you."
           }
         }
       },

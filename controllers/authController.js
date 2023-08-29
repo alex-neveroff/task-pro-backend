@@ -1,4 +1,4 @@
-import { User } from "../models/index.js";
+import { User, Session } from "../models/index.js";
 import { HttpError, uploadAvatar } from "../middlewars/index.js";
 import { controllerWrapper } from "../decorators/index.js";
 import bcrypt from "bcryptjs";
@@ -9,7 +9,7 @@ dotenv.config();
 const { JWT_SECRET } = process.env;
 
 const register = async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, display } = req.body;
   const user = await User.findOne({ email });
   if (user) {
     throw HttpError(409, "Email in use");
@@ -25,6 +25,7 @@ const register = async (req, res) => {
   };
   const token = jwt.sign(payload, JWT_SECRET, { expiresIn: "24h" });
   await User.findByIdAndUpdate(newUser._id, { token });
+  await Session.create({ token, display });
 
   res.status(201).json({
     token,
@@ -34,11 +35,14 @@ const register = async (req, res) => {
       theme: newUser.theme,
       avatar: newUser.avatar,
     },
+    session: {
+      display: display || "desktop",
+    },
   });
 };
 
 const login = async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, display } = req.body;
   const user = await User.findOne({ email });
   if (!user) {
     throw HttpError(401, "Email or password is wrong");
@@ -52,6 +56,7 @@ const login = async (req, res) => {
   };
   const token = jwt.sign(payload, JWT_SECRET, { expiresIn: "24h" });
   await User.findByIdAndUpdate(user._id, { token });
+  await Session.create({ token, display });
 
   res.json({
     token: token,
@@ -60,6 +65,9 @@ const login = async (req, res) => {
       email: user.email,
       theme: user.theme,
       avatar: user.avatar,
+    },
+    session: {
+      display: display || "desktop",
     },
   });
 };
@@ -72,13 +80,6 @@ const getCurrent = async (req, res) => {
     theme,
     avatar,
   });
-};
-
-const changeTheme = async (req, res) => {
-  const { _id, email } = req.user;
-  const { theme } = req.body;
-  await User.findByIdAndUpdate(_id, { theme });
-  res.json({ email, theme });
 };
 
 const updateUser = async (req, res) => {
@@ -108,9 +109,27 @@ const updateUser = async (req, res) => {
   res.json(result);
 };
 
+const changeTheme = async (req, res) => {
+  const { _id, email } = req.user;
+  const { theme } = req.body;
+  await User.findByIdAndUpdate(_id, { theme });
+  res.json({ email, theme });
+};
+
+const changeDisplay = async (req, res) => {
+  const { token } = req.user;
+  const { display } = req.body;
+
+  await Session.findOneAndUpdate({ token }, { $set: { display } });
+  res.json({ display });
+};
+
 const logout = async (req, res) => {
-  const { _id } = req.user;
+  const { _id, token } = req.user;
+
+  await Session.findOneAndDelete({ token });
   await User.findByIdAndUpdate(_id, { token: "" });
+
   res.status(204).end();
 };
 
@@ -120,5 +139,6 @@ export default {
   getCurrent: controllerWrapper(getCurrent),
   changeTheme: controllerWrapper(changeTheme),
   updateUser: controllerWrapper(updateUser),
+  changeDisplay: controllerWrapper(changeDisplay),
   logout: controllerWrapper(logout),
 };

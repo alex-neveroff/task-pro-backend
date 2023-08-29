@@ -10,7 +10,7 @@ const uploadAvatar = async (req, res) => {
     use_filename: true,
     unique_filename: false,
     overwrite: true,
-    transformation: [{ width: 250, height: 250, crop: "fill" }],
+    transformation: [{ width: 68, height: 68, crop: "fill" }],
     quality: "auto:best",
   };
   try {
