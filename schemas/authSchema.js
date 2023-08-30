@@ -94,7 +94,6 @@ export const updateUserSchema = Joi.object({
 export const themeSchema = Joi.object({
   theme: Joi.string()
     .valid(...themeList)
-    .insensitive()
     .required()
     .messages({
       "any.required": "Missing required theme field",
@@ -105,7 +104,6 @@ export const themeSchema = Joi.object({
 export const displaySchema = Joi.object({
   display: Joi.string()
     .valid(...displayList)
-    .insensitive()
     .required()
     .messages({
       "any.required": "Missing required theme display",

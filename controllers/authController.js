@@ -1,5 +1,5 @@
-import { User, Session } from "../models/index.js";
-import { HttpError, uploadAvatar } from "../middlewars/index.js";
+import { User, Session, Board } from "../models/index.js";
+import { HttpError, uploadAvatar, getBackground } from "../middlewars/index.js";
 import { controllerWrapper } from "../decorators/index.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
@@ -55,6 +55,12 @@ const login = async (req, res) => {
     id: user._id,
   };
   const token = jwt.sign(payload, JWT_SECRET, { expiresIn: "24h" });
+  const userBoards = await Board.find({ owner: user._id });
+  userBoards.forEach(async (board) => {
+    const { background, _id } = board;
+    const backgroundURL = await getBackground(background, display);
+    await Board.findByIdAndUpdate(_id, { backgroundURL });
+  });
   await User.findByIdAndUpdate(user._id, { token });
   await Session.create({ token, display });
 
@@ -117,11 +123,22 @@ const changeTheme = async (req, res) => {
 };
 
 const changeDisplay = async (req, res) => {
-  const { token } = req.user;
-  const { display } = req.body;
+  const { token, _id: owner } = req.user;
+  const { display: newDisplay } = req.body;
 
-  await Session.findOneAndUpdate({ token }, { $set: { display } });
-  res.json({ display });
+  const currentSession = await Session.findOne({ token });
+  const oldDisplay = currentSession ? currentSession.display : null;
+  if (newDisplay && newDisplay !== oldDisplay) {
+    await Session.findOneAndUpdate({ token }, { $set: { newDisplay } });
+    const userBoards = await Board.find({ owner });
+    userBoards.forEach(async (board) => {
+      const { background, _id: boardId } = board;
+      const backgroundURL = await getBackground(background, newDisplay);
+      await Board.findByIdAndUpdate(boardId, { backgroundURL });
+    });
+  }
+
+  res.json({ newDisplay });
 };
 
 const logout = async (req, res) => {

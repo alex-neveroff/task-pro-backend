@@ -2,10 +2,9 @@ import Joi from "joi";
 import { iconsList, backgroundsList } from "../constants/index.js";
 
 export const addBoardSchema = Joi.object({
-  title: Joi.string().min(3).max(15).required().messages({
+  title: Joi.string().max(45).required().messages({
     "any required": "Missing required title field",
     "string.base": "Field title must be a string",
-    "string.min": "Field title must be at least 3 characters long",
     "string.max": "Field title must be no more than 15 characters long",
   }),
   icon: Joi.string()
@@ -24,9 +23,8 @@ export const addBoardSchema = Joi.object({
 });
 
 export const updateBoardSchema = Joi.object({
-  title: Joi.string().min(3).max(15).messages({
+  title: Joi.string().max(45).messages({
       "string.base": "Field title must be a string",
-    "string.min": "Field title must be at least 3 characters long",
     "string.max": "Field title must be no more than 15 characters long",
   }),
   icon: Joi.string()

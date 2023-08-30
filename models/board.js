@@ -22,11 +22,6 @@ const boardSchema = new Schema(
       enum: iconsList,
       default: "icon-board-icon-1",
     },
-    currentBoard: {
-      type: Boolean,
-      default: false,
-      required: true,
-    },
     owner: {
       type: Schema.Types.ObjectId,
       ref: "user",
