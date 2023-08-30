@@ -227,31 +227,7 @@
           "content": {
             "multipart/form-data": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "avatar": {
-                    "type": "file",
-                    "format": "binary",
-                    "description": "User's avatar",
-                    "example": "avatar.jpg"
-                  },
-                  "name": {
-                    "type": "string",
-                    "description": "User's name",
-                    "example": "User"
-                  },
-                  "email": {
-                    "type": "string",
-                    "format": "email",
-                    "description": "User's email",
-                    "example": "user@email.com"
-                  },
-                  "password": {
-                    "type": "string",
-                    "description": "User's password",
-                    "example": "user12345"
-                  }
-                }
+                "$ref": "#/components/schemas/UpdateUserRequest"
               }
             }
           }
@@ -318,7 +294,7 @@
         "security": [{ "Bearer": [] }],
         "responses": {
           "204": {
-            "description": "Logout successful, No Content"
+            "description": "Logout successful, no content"
           },
           "401": {
             "description": "Not authorized (email or password is wrong)",
@@ -1390,7 +1366,7 @@
     "schemas": {
       "RegistrationRequest": {
         "type": "object",
-        "required": ["name", "email", "password"],
+        "required": ["email", "password"],
         "properties": {
           "name": {
             "type": "string",
@@ -1405,7 +1381,7 @@
           },
           "password": {
             "type": "string",
-            "description": "User's password. It must contain only Latin letters; may contain numbers, signs, letters in different case; does not contain a space. . It must contain minimum 8 characters and maximum 64",
+            "description": "User's password. It must contain only Latin letters; may contain numbers, signs, letters in different case; does not contain a space. It must contain minimum 8 characters and maximum 64",
             "example": "user12345"
           }
         }
@@ -1479,7 +1455,7 @@
           },
           "password": {
             "type": "string",
-            "description": "User's password. It must contain only Latin letters, at least one uppercase, lowercase letter and a number; does not contain a space. . It must contain minimum 8 characters and maximum 64",
+            "description": "User's password. It must contain only Latin letters, at least one uppercase, lowercase letter and a number; does not contain a space. It must contain minimum 8 characters and maximum 64",
             "example": "user12345"
           }
         }
@@ -1641,7 +1617,7 @@
         "properties": {
           "name": {
             "type": "string",
-            "description": "User's name. It must contain only Latin letters; may contain numbers, signs, letters in different case. . It must contain minimum 2 characters and maximum 32",
+            "description": "User's name. It must contain only Latin letters; may contain numbers, signs, letters in different case. It must contain minimum 2 characters and maximum 32",
             "example": "User"
           },
           "email": {
@@ -1652,13 +1628,14 @@
           },
           "password": {
             "type": "string",
-            "description": "User's password. It must contain only Latin letters; may contain numbers, signs, letters in different case; does not contain a space. . It must contain minimum 8 characters and maximum 64",
+            "description": "User's password. It must contain only Latin letters; may contain numbers, signs, letters in different case; does not contain a space. It must contain minimum 8 characters and maximum 64",
             "example": "user12345"
           },
           "avatar": {
-            "type": "string",
+            "type": "file",
+            "format": "binary",
             "description": "User's avatar",
-            "example": ""
+            "example": "avatar.jpg"
           }
         }
       },
@@ -1822,6 +1799,7 @@
           }
         }
       },
+
       "GetBoardByIdResponse": {
         "type": "object",
         "properties": {
@@ -1965,6 +1943,7 @@
 
       "AddBoardRequest": {
         "type": "object",
+        "required": ["title"],
         "properties": {
           "title": {
             "type": "string",
@@ -2009,8 +1988,7 @@
             ],
             "example": "mountains"
           }
-        },
-        "required": ["title"]
+        }
       },
       "AddBoardResponse": {
         "type": "object",
@@ -2220,6 +2198,7 @@
 
       "AddColumnRequest": {
         "type": "object",
+        "required": ["title", "board"],
         "properties": {
           "title": {
             "type": "string",
@@ -2231,8 +2210,7 @@
             "description": "Board id",
             "example": "64ed80b3c498b1c02dede12d"
           }
-        },
-        "required": ["title", "board"]
+        }
       },
       "AddColumnResponse": {
         "type": "object",
@@ -2267,14 +2245,14 @@
 
       "UpdateColumnRequest": {
         "type": "object",
+        "required": ["title"],
         "properties": {
           "title": {
             "type": "string",
             "description": "Column's title",
             "example": "First Column"
           }
-        },
-        "required": ["title"]
+        }
       },
       "UpdateColumnResponse": {
         "type": "object",
@@ -2350,6 +2328,7 @@
 
       "AddCardRequest": {
         "type": "object",
+        "required": ["title", "column"],
         "properties": {
           "title": {
             "type": "string",
@@ -2377,8 +2356,7 @@
             "description": "Board id",
             "example": "64ed80b3c498b1c02dede12d"
           }
-        },
-        "required": ["title", "description", "column"]
+        }
       },
       "AddCardResponse": {
         "type": "object",
@@ -2502,6 +2480,7 @@
 
       "MoveCardRequest": {
         "type": "object",
+        "required": ["column"],
         "properties": {
           "column": {
             "type": "string",
