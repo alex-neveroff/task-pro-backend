@@ -25,7 +25,7 @@ const register = async (req, res) => {
   };
   const token = jwt.sign(payload, JWT_SECRET, { expiresIn: "24h" });
   await User.findByIdAndUpdate(newUser._id, { token });
-  await Session.create({ token, display });
+  await Session.create({ token, email, display });
 
   res.status(201).json({
     token,
@@ -62,7 +62,7 @@ const login = async (req, res) => {
     await Board.findByIdAndUpdate(_id, { backgroundURL });
   });
   await User.findByIdAndUpdate(user._id, { token });
-  await Session.create({ token, display });
+  await Session.create({ token, email, display });
 
   res.json({
     token: token,
