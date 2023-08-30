@@ -8,12 +8,18 @@ import {
 } from "../constants/index.js";
 
 export const registerSchema = Joi.object({
-  name: Joi.string().min(2).max(32).pattern(nameRegExp).messages({
-    "string.base": "Field name must be a string",
-    "string.min": "Field name must be at least 3 characters long",
-    "string.max": "Field name must be no more than 32 characters long",
-    "string.pattern.base": "Field name not valid",
-  }),
+  name: Joi.string()
+    .allow("")
+    .optional()
+    .min(2)
+    .max(32)
+    .pattern(nameRegExp)
+    .messages({
+      "string.base": "Field name must be a string",
+      "string.min": "Field name must be at least 3 characters long",
+      "string.max": "Field name must be no more than 32 characters long",
+      "string.pattern.base": "Field name not valid",
+    }),
   email: Joi.string().pattern(emailRegExp).required().messages({
     "any.required": "Missing required email field",
     "string.base": "Field email must be a string",
@@ -72,12 +78,18 @@ export const loginSchema = Joi.object({
 });
 
 export const updateUserSchema = Joi.object({
-  name: Joi.string().min(2).max(32).pattern(nameRegExp).messages({
-    "string.base": "Field name must be a string",
-    "string.min": "Field name must be at least 3 characters long",
-    "string.max": "Field name must be no more than 32 characters long",
-    "string.pattern.base": "Field name not valid",
-  }),
+  name: Joi.string()
+    .allow("")
+    .optional()
+    .min(2)
+    .max(32)
+    .pattern(nameRegExp)
+    .messages({
+      "string.base": "Field name must be a string",
+      "string.min": "Field name must be at least 3 characters long",
+      "string.max": "Field name must be no more than 32 characters long",
+      "string.pattern.base": "Field name not valid",
+    }),
   email: Joi.string().pattern(emailRegExp).messages({
     "string.base": "Field email must be a string",
     "string.pattern.base": "Field email not valid",
