@@ -3,7 +3,7 @@ import { sendEmail } from "../middlewars/index.js";
 import { Message } from "../models/index.js";
 
 const helpEmail = async (req, res) => {
-  const { name } = req.user;
+  const { name, _id: owner } = req.user;
   const { email, comment } = req.body;
 
   const newEmail = {
@@ -17,9 +17,11 @@ const helpEmail = async (req, res) => {
     `,
   };
   await sendEmail(newEmail);
-  await Message.create(req.body);
+  const result = await Message.create({ ...req.body, owner });
 
-  res.json(req.body);
+  res.json({
+    message: "Help email sent",
+  });
 };
 
 export default {

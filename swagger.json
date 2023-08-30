@@ -1687,16 +1687,10 @@
       "HelpResponse": {
         "type": "object",
         "properties": {
-          "email": {
+          "message": {
             "type": "string",
-            "description": "User's email",
-            "format": "email",
-            "example": "user@email.com"
-          },
-          "comment": {
-            "type": "string",
-            "description": "User's comment",
-            "example": "Hello, I have a question for you."
+            "description": "Message about email sending",
+            "example": "Help email sent"
           }
         }
       },
@@ -2143,54 +2137,52 @@
       "DeleteBoardResponse": {
         "type": "object",
         "properties": {
-          "data": {
-            "type": "object",
-            "properties": {
-              "_id": {
-                "type": "string",
-                "description": "Board id",
-                "example": "64ed80b3c498b1c02dede12d"
-              },
-              "title": {
-                "type": "string",
-                "description": "Board's title",
-                "example": "New Board"
-              },
-              "icon": {
-                "type": "string",
-                "description": "Board's icon",
-                "enum": [
-                  "icon-board-icon-1",
-                  "icon-board-icon-2",
-                  "icon-board-icon-3",
-                  "icon-board-icon-4",
-                  "icon-board-icon-5",
-                  "icon-board-icon-6",
-                  "icon-board-icon-7",
-                  "icon-board-icon-8"
-                ],
-                "example": "icon-board-icon-3"
-              },
-              "background": {
-                "type": "string",
-                "description": "Board's background title",
-                "example": "fullmoon"
-              },
-              "owner": {
-                "type": "string",
-                "description": "User's id",
-                "example": "64d11ad3b31bb700519dad42"
-              },
-              "createdAt": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2023-08-09T18:30:47.840Z"
-              },
-              "updatedAt": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2023-08-09T18:31:22.235Z"
-              }
+          "type": "object",
+          "properties": {
+            "_id": {
+              "type": "string",
+              "description": "Board id",
+              "example": "64ed80b3c498b1c02dede12d"
+            },
+            "title": {
+              "type": "string",
+              "description": "Board's title",
+              "example": "New Board"
+            },
+            "icon": {
+              "type": "string",
+              "description": "Board's icon",
+              "enum": [
+                "icon-board-icon-1",
+                "icon-board-icon-2",
+                "icon-board-icon-3",
+                "icon-board-icon-4",
+                "icon-board-icon-5",
+                "icon-board-icon-6",
+                "icon-board-icon-7",
+                "icon-board-icon-8"
+              ],
+              "example": "icon-board-icon-3"
+            },
+            "background": {
+              "type": "string",
+              "description": "Board's background title",
+              "example": "fullmoon"
+            },
+            "owner": {
+              "type": "string",
+              "description": "User's id",
+              "example": "64d11ad3b31bb700519dad42"
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2023-08-09T18:30:47.840Z"
+            },
+            "updatedAt": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2023-08-09T18:31:22.235Z"
             }
           }
         }
@@ -2288,39 +2280,32 @@
       "DeleteColumnResponse": {
         "type": "object",
         "properties": {
-          "message": {
-            "type": "string",
-            "description": "Column id",
-            "example": "Column {id} deleted successfully"
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "_id": {
-                "type": "string",
-                "description": "Column id",
-                "example": "64ed80b3c498b1c02dede12d"
-              },
-              "title": {
-                "type": "string",
-                "description": "Column's title",
-                "example": "First Column"
-              },
-              "board": {
-                "type": "string",
-                "description": "Board id",
-                "example": "64ed80b3c498b1c02dede12d"
-              },
-              "createdAt": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2023-08-09T18:30:47.840Z"
-              },
-              "updatedAt": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2023-08-09T18:31:22.235Z"
-              }
+          "type": "object",
+          "properties": {
+            "_id": {
+              "type": "string",
+              "description": "Column id",
+              "example": "64ed80b3c498b1c02dede12d"
+            },
+            "title": {
+              "type": "string",
+              "description": "Column's title",
+              "example": "First Column"
+            },
+            "board": {
+              "type": "string",
+              "description": "Board id",
+              "example": "64ed80b3c498b1c02dede12d"
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2023-08-09T18:30:47.840Z"
+            },
+            "updatedAt": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2023-08-09T18:31:22.235Z"
             }
           }
         }
