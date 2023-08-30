@@ -10,7 +10,6 @@ const cardSchema = new Schema(
     },
     description: {
       type: String,
-      required: [true, "Description for the card is required"],
     },
     priority: {
       type: String,

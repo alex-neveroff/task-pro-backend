@@ -16,7 +16,7 @@ export const registerSchema = Joi.object({
     .pattern(nameRegExp)
     .messages({
       "string.base": "Field name must be a string",
-      "string.min": "Field name must be at least 3 characters long",
+      "string.min": "Field name must be at least 2 characters long",
       "string.max": "Field name must be no more than 32 characters long",
       "string.pattern.base": "Field name not valid",
     }),
@@ -86,7 +86,7 @@ export const updateUserSchema = Joi.object({
     .pattern(nameRegExp)
     .messages({
       "string.base": "Field name must be a string",
-      "string.min": "Field name must be at least 3 characters long",
+      "string.min": "Field name must be at least 2 characters long",
       "string.max": "Field name must be no more than 32 characters long",
       "string.pattern.base": "Field name not valid",
     }),

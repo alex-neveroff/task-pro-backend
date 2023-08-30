@@ -6,8 +6,7 @@ export const addCardSchema = Joi.object({
     "any required": "Missing required title field",
     "string.base": "Field title must be a string",
   }),
-  description: Joi.string().required().messages({
-    "any required": "Missing required description field",
+  description: Joi.string().messages({
     "string.base": "Field description must be a string",
   }),
   priority: Joi.string()
