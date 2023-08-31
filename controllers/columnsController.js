@@ -32,7 +32,7 @@ const updateColumn = async (req, res) => {
   if (!result) {
     throw HttpError(404);
   }
-  res.json({ result });
+  res.json( result );
 };
 
 const deleteColumn = async (req, res) => {
