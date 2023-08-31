@@ -10,10 +10,7 @@ const deleteColumn = async (req, res) => {
   if (!deleteCurrentColumn || !deleteCards) {
     throw HttpError(404);
   }
-  res.json({
-    Column: deleteCurrentColumn,
-    Cards: deleteCards,
-  });
+  res.json(deleteCurrentColumn);
 };
 
 export default controllerWrapper(deleteColumn);

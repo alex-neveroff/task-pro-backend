@@ -7,26 +7,33 @@ const updateBoard = async (req, res) => {
   const { token } = req.user;
   const { background: newbackground } = req.body;
   const board = await Board.findById(boardId, "background");
+  if (!board) {
+    throw HttpError(404);
+  }
   const oldBackground = board.background;
-  const session = await Session.findOne({ token }, "display");
-  const display = session.display;
+  const currentSession = await Session.findOne({ token }, "display");
+  if (!currentSession) {
+    throw HttpError(404, "The session has expired. Try to relogin.");
+  }
+
+  const display = currentSession.display;
   let backgroundURL = "";
 
   if (newbackground && newbackground !== oldBackground) {
     backgroundURL = await getBackground(newbackground, display);
-  }
+  } else backgroundURL = board.backgroundURL;
 
-  const result = await Board.findByIdAndUpdate(
+  const updatedBoard = await Board.findByIdAndUpdate(
     boardId,
     { ...req.body, backgroundURL },
     {
       new: true,
     }
   );
-  if (!result) {
+  if (!updatedBoard) {
     throw HttpError(404);
   }
-  res.json({ result });
+  res.json({ updatedBoard });
 };
 
 export default controllerWrapper(updateBoard);

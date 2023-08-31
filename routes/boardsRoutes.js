@@ -1,6 +1,6 @@
 import express from "express";
 import { validateBody } from "../decorators/index.js";
-import { authenticate, isValidId } from "../middlewars/index.js";
+import { authenticate, isEmptyBody, isValidId } from "../middlewars/index.js";
 import {
   addBoard,
   deleteBoard,
@@ -15,9 +15,10 @@ boardsRouter.use(authenticate);
 
 boardsRouter.get("/", getAllBoards);
 boardsRouter.get("/:boardId", isValidId("boardId"), getOneBoard);
-boardsRouter.post("/", validateBody(addBoardSchema), addBoard);
+boardsRouter.post("/", isEmptyBody, validateBody(addBoardSchema), addBoard);
 boardsRouter.put(
   "/:boardId",
+  isEmptyBody,
   isValidId("boardId"),
   validateBody(updateBoardSchema),
   updateBoard

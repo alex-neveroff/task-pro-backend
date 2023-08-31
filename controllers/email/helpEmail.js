@@ -17,7 +17,7 @@ const helpEmail = async (req, res) => {
     `,
   };
   await sendEmail(newEmail);
-  const result = await Message.create({ ...req.body, owner });
+  await Message.create({ ...req.body, owner });
 
   res.json({
     message: "Help email sent",

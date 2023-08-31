@@ -1,10 +1,9 @@
 import express from "express";
 import { validateBody } from "../decorators/index.js";
-import { authenticate, isValidId } from "../middlewars/index.js";
+import { authenticate, isEmptyBody, isValidId } from "../middlewars/index.js";
 import {
   addCard,
   deleteCard,
-  getCard,
   moveCard,
   updateCard,
 } from "../controllers/index.js";
@@ -17,16 +16,17 @@ import {
 const cardsRouter = express.Router();
 cardsRouter.use(authenticate);
 
-cardsRouter.get("/:cardId", getCard);
-cardsRouter.post("/", validateBody(addCardSchema), addCard);
+cardsRouter.post("/", isEmptyBody, validateBody(addCardSchema), addCard);
 cardsRouter.put(
   "/:cardId",
+  isEmptyBody,
   isValidId("cardId"),
   validateBody(updateCardSchema),
   updateCard
 );
 cardsRouter.patch(
   "/:cardId",
+  isEmptyBody,
   isValidId("cardId"),
   validateBody(moveCardSchema),
   moveCard

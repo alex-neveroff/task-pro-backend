@@ -4,11 +4,11 @@ import { Card } from "../../models/index.js";
 
 const deleteCard = async (req, res) => {
   const { cardId } = req.params;
-  const result = await Card.findByIdAndDelete(cardId);
-  if (!result) {
+  const deletedCard = await Card.findByIdAndDelete(cardId);
+  if (!deletedCard) {
     throw HttpError(404);
   }
-  res.json(result);
+  res.json(deletedCard);
 };
 
 export default controllerWrapper(deleteCard);

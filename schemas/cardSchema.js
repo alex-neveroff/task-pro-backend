@@ -3,7 +3,7 @@ import { priorityList } from "../constants/index.js";
 
 export const addCardSchema = Joi.object({
   title: Joi.string().required().messages({
-    "any required": "Missing required title field",
+    "any.required": "Missing required title field",
     "string.base": "Field title must be a string",
   }),
   description: Joi.string().messages({
@@ -17,7 +17,7 @@ export const addCardSchema = Joi.object({
     }),
   deadline: Joi.date().iso(),
   column: Joi.string().required().messages({
-    "any required": "Missing required column field",
+    "any.required": "Missing required column field",
   }),
 });
 
@@ -39,6 +39,6 @@ export const updateCardSchema = Joi.object({
 
 export const moveCardSchema = Joi.object({
   column: Joi.string().required().messages({
-    "any required": "Missing required column field",
+    "any.required": "Missing required column field",
   }),
 });

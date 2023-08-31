@@ -1,5 +1,4 @@
 import { User } from "../../models/index.js";
-import { HttpError } from "../../helpers/index.js";
 import { controllerWrapper } from "../../decorators/index.js";
 
 const changeTheme = async (req, res) => {

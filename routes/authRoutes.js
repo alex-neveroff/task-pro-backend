@@ -32,6 +32,7 @@ authRouter.get("/current", authenticate, getCurrent);
 
 authRouter.put(
   "/update",
+  isEmptyBody,
   authenticate,
   uploadCloud.single("avatar"),
   validateBody(updateUserSchema),
@@ -40,6 +41,7 @@ authRouter.put(
 
 authRouter.patch(
   "/theme",
+  isEmptyBody,
   authenticate,
   validateBody(themeSchema),
   changeTheme
@@ -47,6 +49,7 @@ authRouter.patch(
 
 authRouter.patch(
   "/display",
+  isEmptyBody,
   authenticate,
   validateBody(displaySchema),
   changeDisplay

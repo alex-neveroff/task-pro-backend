@@ -16,11 +16,9 @@ export { default as updateBoard } from "./boards/updateBoard.js";
 
 export { default as addColumn } from "./columns/addColumn.js";
 export { default as deleteColumn } from "./columns/deleteColumn.js";
-export { default as getColumn } from "./columns/getColumn.js";
 export { default as updateColumn } from "./columns/updateColumn.js";
 
 export { default as addCard } from "./cards/addCard.js";
 export { default as deleteCard } from "./cards/deleteCard.js";
-export { default as getCard } from "./cards/getCard.js";
 export { default as moveCard } from "./cards/moveCard.js";
 export { default as updateCard } from "./cards/updateCard.js";

@@ -4,13 +4,14 @@ import { Column, Card } from "../../models/index.js";
 
 const updateColumn = async (req, res) => {
   const { columnId } = req.params;
-  const result = await Column.findByIdAndUpdate(columnId, req.body, {
+
+  const updatedColumn = await Column.findByIdAndUpdate(columnId, req.body, {
     new: true,
   });
-  if (!result) {
-    throw HttpError(404);
+  if (!updatedColumn) {
+    throw HttpError(404, "No column found");
   }
-  res.json({ result });
+  res.json(updatedColumn);
 };
 
 export default controllerWrapper(updateColumn);

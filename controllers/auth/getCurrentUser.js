@@ -1,4 +1,3 @@
-import { HttpError } from "../../helpers/index.js";
 import { controllerWrapper } from "../../decorators/index.js";
 
 const getCurrent = async (req, res) => {

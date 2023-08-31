@@ -14,20 +14,23 @@ const updateUser = async (req, res) => {
   if (req.file) {
     updatedUser.avatar = await uploadAvatar(req, res);
   }
-
   if (password) {
     updatedUser.password = await bcrypt.hash(password, 10);
   }
-
   if (email && email !== oldEmail) {
     updatedUser.email = email;
   }
 
-  const result = await User.findByIdAndUpdate(_id, updatedUser, {
+  const updateUserData = await User.findByIdAndUpdate(_id, updatedUser, {
     new: true,
     select: "name email theme avatar -_id",
   });
-  res.json(result);
+
+  if (!updateUserData) {
+    throw HttpError(404);
+  }
+
+  res.json(updateUserData);
 };
 
 export default controllerWrapper(updateUser);

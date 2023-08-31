@@ -5,6 +5,11 @@ import { Board } from "../../models/index.js";
 
 const getOneBoard = async (req, res) => {
   const { boardId } = req.params;
+  const currentBoard = await Board.findById(boardId);
+  if (!currentBoard) {
+    throw HttpError(404, "No board found");
+  }
+
   const board = await Board.aggregate([
     {
       $match: {

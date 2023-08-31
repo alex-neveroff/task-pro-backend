@@ -14,11 +14,7 @@ const deleteBoard = async (req, res) => {
   if (!deleteCurrentBoard || !deleteColumns || !deleteCards) {
     throw HttpError(404);
   }
-  res.json({
-    Board: deleteCurrentBoard,
-    Columns: columns,
-    Cards: deleteCards,
-  });
+  res.json(deleteCurrentBoard);
 };
 
 export default controllerWrapper(deleteBoard);
