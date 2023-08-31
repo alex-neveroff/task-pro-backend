@@ -1,6 +1,6 @@
-import { controllerWrapper } from "../decorators/index.js";
-import { sendEmail } from "../middlewars/index.js";
-import { Message } from "../models/index.js";
+import { controllerWrapper } from "../../decorators/index.js";
+import { sendEmail } from "../../helpers/index.js";
+import { Message } from "../../models/index.js";
 
 const helpEmail = async (req, res) => {
   const { name, _id: owner } = req.user;
@@ -24,6 +24,4 @@ const helpEmail = async (req, res) => {
   });
 };
 
-export default {
-  helpEmail: controllerWrapper(helpEmail),
-};
+export default controllerWrapper(helpEmail);

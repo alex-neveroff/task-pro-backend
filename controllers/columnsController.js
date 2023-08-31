@@ -1,7 +1,6 @@
-import { controllerWrapper } from "../decorators/index.js";
-import HttpError from "../middlewars/HttpError.js";
-import Card from "../models/card.js";
-import Column from "../models/column.js";
+import { controllerWrapper } from "../../decorators/index.js";
+import { HttpError } from "../../middlewars/index.js";
+import { Column, Card } from "../../models/index.js";
 
 const getColumn = async (req, res) => {
   const { columnId } = req.params;
