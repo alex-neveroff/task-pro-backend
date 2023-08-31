@@ -3,7 +3,7 @@ import { iconsList, backgroundsList } from "../constants/index.js";
 
 export const addBoardSchema = Joi.object({
   title: Joi.string().required().messages({
-    "any required": "Missing required title field",
+    "any.required": "Missing required title field",
     "string.base": "Field title must be a string",
   }),
   icon: Joi.string()

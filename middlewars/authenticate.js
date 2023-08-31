@@ -1,5 +1,5 @@
 import { User } from "../models/index.js";
-import { HttpError } from "./index.js";
+import { HttpError } from "../helpers/index.js";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 

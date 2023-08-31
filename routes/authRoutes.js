@@ -8,47 +8,53 @@ import {
   updateUserSchema,
   displaySchema,
 } from "../schemas/index.js";
-import { authController } from "../controllers/index.js";
+import {
+  changeDisplay,
+  changeTheme,
+  getCurrent,
+  login,
+  logout,
+  register,
+  updateUser,
+} from "../controllers/index.js";
 const authRouter = express.Router();
 
 authRouter.post(
   "/register",
   isEmptyBody,
   validateBody(registerSchema),
-  authController.register
+  register
 );
 
-authRouter.post(
-  "/login",
-  isEmptyBody,
-  validateBody(loginSchema),
-  authController.login
-);
+authRouter.post("/login", isEmptyBody, validateBody(loginSchema), login);
 
-authRouter.get("/current", authenticate, authController.getCurrent);
+authRouter.get("/current", authenticate, getCurrent);
 
 authRouter.put(
   "/update",
+  isEmptyBody,
   authenticate,
   uploadCloud.single("avatar"),
   validateBody(updateUserSchema),
-  authController.updateUser
+  updateUser
 );
 
 authRouter.patch(
   "/theme",
+  isEmptyBody,
   authenticate,
   validateBody(themeSchema),
-  authController.changeTheme
+  changeTheme
 );
 
 authRouter.patch(
   "/display",
+  isEmptyBody,
   authenticate,
   validateBody(displaySchema),
-  authController.changeDisplay
+  changeDisplay
 );
 
-authRouter.post("/logout", authenticate, authController.logout);
+authRouter.post("/logout", authenticate, logout);
 
 export default authRouter;
