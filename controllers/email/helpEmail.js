@@ -8,6 +8,7 @@ const helpEmail = async (req, res) => {
   const { email, comment } = req.body;
 
   const newEmail = {
+    name,
     from: email,
     subject: `User ${name} need help`,
     html: `
@@ -17,8 +18,6 @@ const helpEmail = async (req, res) => {
     <p>Yours respectfully,</p><p>${name}</p> 
     `,
   };
-  await sendEmail(newEmail);
-
   const sendingEmail = await sendEmail(newEmail);
   if (!sendingEmail) {
     throw HttpError(400, "Error sending email");
