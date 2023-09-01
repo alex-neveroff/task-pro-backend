@@ -1782,24 +1782,24 @@
                 "createdAt": {
                   "type": "string",
                   "format": "date-time",
-                  "example": "2023-08-09T18:30:47.840Z"
+                  "example": "2023-09-06T18:30:47.840Z"
                 },
                 "updatedAt": {
                   "type": "string",
                   "format": "date-time",
-                  "example": "2023-08-09T18:31:22.235Z"
+                  "example": "2023-09-06T18:31:22.235Z"
                 }
               }
             },
             "createdAt": {
               "type": "string",
               "format": "date-time",
-              "example": "2023-08-09T18:30:47.840Z"
+              "example": "2023-09-06T18:30:47.840Z"
             },
             "updatedAt": {
               "type": "string",
               "format": "date-time",
-              "example": "2023-08-09T18:31:22.235Z"
+              "example": "2023-09-06T18:31:22.235Z"
             }
           }
         }
@@ -1879,12 +1879,12 @@
               "createdAt": {
                 "type": "string",
                 "format": "date-time",
-                "example": "2023-08-09T18:30:47.840Z"
+                "example": "2023-09-06T18:30:47.840Z"
               },
               "updatedAt": {
                 "type": "string",
                 "format": "date-time",
-                "example": "2023-08-09T18:31:22.235Z"
+                "example": "2023-09-06T18:31:22.235Z"
               }
             }
           },
@@ -1896,8 +1896,8 @@
                 "_id": "64d5585cf10982f0832226f4",
                 "title": "Column",
                 "board": "64d52e77846f3f325f35b8f0",
-                "createdAt": "2023-08-10T21:36:28.801Z",
-                "updatedAt": "2023-08-13T08:13:04.104Z",
+                "createdAt": "2023-09-06T21:36:28.801Z",
+                "updatedAt": "2023-09-06T08:13:04.104Z",
                 "cards": [
                   {
                     "_id": "64d8901109b4e55ec6255983",
@@ -1906,8 +1906,8 @@
                     "priority": "without",
                     "deadline": "",
                     "column": "64d5585cf10982f0832226f4",
-                    "createdAt": "2023-08-13T08:10:57.245Z",
-                    "updatedAt": "2023-08-13T08:13:04.154Z"
+                    "createdAt": "2023-09-06T08:10:57.245Z",
+                    "updatedAt": "2023-09-06T08:13:04.154Z"
                   },
                   {
                     "_id": "64d8907409b4e55ec6255990",
@@ -1916,8 +1916,8 @@
                     "priority": "low",
                     "deadline": "",
                     "column": "64d5585cf10982f0832226f4",
-                    "createdAt": "2023-08-13T08:12:36.110Z",
-                    "updatedAt": "2023-08-13T08:12:36.110Z"
+                    "createdAt": "2023-09-06T08:12:36.110Z",
+                    "updatedAt": "2023-09-06T08:12:36.110Z"
                   },
                   {
                     "_id": "64d88e0d09b4e55ec625596c",
@@ -1926,8 +1926,8 @@
                     "priority": "medium",
                     "deadline": "",
                     "column": "64d5585cf10982f0832226f4",
-                    "createdAt": "2023-08-13T08:12:40.524Z",
-                    "updatedAt": "2023-08-13T08:12:40.524Z"
+                    "createdAt": "2023-09-06T08:12:40.524Z",
+                    "updatedAt": "2023-09-06T08:12:40.524Z"
                   },
                   {
                     "_id": "64d8907809b4e55ec6255994",
@@ -1936,8 +1936,8 @@
                     "priority": "high",
                     "deadline": "",
                     "column": "64d5585cf10982f0832226f4",
-                    "createdAt": "2023-08-13T08:12:40.524Z",
-                    "updatedAt": "2023-08-13T08:12:40.524Z"
+                    "createdAt": "2023-09-06T08:12:40.524Z",
+                    "updatedAt": "2023-09-06T08:12:40.524Z"
                   }
                 ]
               }
@@ -2031,12 +2031,12 @@
           "createdAt": {
             "type": "string",
             "format": "date-time",
-            "example": "2023-08-09T18:30:47.840Z"
+            "example": "2023-09-06T18:30:47.840Z"
           },
           "updatedAt": {
             "type": "string",
             "format": "date-time",
-            "example": "2023-08-09T18:31:22.235Z"
+            "example": "2023-09-06T18:31:22.235Z"
           }
         }
       },
@@ -2135,12 +2135,12 @@
           "createdAt": {
             "type": "string",
             "format": "date-time",
-            "example": "2023-08-09T18:30:47.840Z"
+            "example": "2023-09-06T18:30:47.840Z"
           },
           "updatedAt": {
             "type": "string",
             "format": "date-time",
-            "example": "2023-08-09T18:31:22.235Z"
+            "example": "2023-09-06T18:31:22.235Z"
           }
         }
       },
@@ -2191,12 +2191,12 @@
           "createdAt": {
             "type": "string",
             "format": "date-time",
-            "example": "2023-08-09T18:30:47.840Z"
+            "example": "2023-09-06T18:30:47.840Z"
           },
           "updatedAt": {
             "type": "string",
             "format": "date-time",
-            "example": "2023-08-09T18:31:22.235Z"
+            "example": "2023-09-06T18:31:22.235Z"
           }
         }
       },
@@ -2238,12 +2238,12 @@
           "createdAt": {
             "type": "string",
             "format": "date-time",
-            "example": "2023-08-09T18:30:47.840Z"
+            "example": "2023-09-06T18:30:47.840Z"
           },
           "updatedAt": {
             "type": "string",
             "format": "date-time",
-            "example": "2023-08-09T18:31:22.235Z"
+            "example": "2023-09-06T18:31:22.235Z"
           }
         }
       },
@@ -2280,12 +2280,12 @@
           "createdAt": {
             "type": "string",
             "format": "date-time",
-            "example": "2023-08-09T18:30:47.840Z"
+            "example": "2023-09-06T18:30:47.840Z"
           },
           "updatedAt": {
             "type": "string",
             "format": "date-time",
-            "example": "2023-08-09T18:31:22.235Z"
+            "example": "2023-09-06T18:31:22.235Z"
           }
         }
       },
@@ -2311,12 +2311,12 @@
           "createdAt": {
             "type": "string",
             "format": "date-time",
-            "example": "2023-08-09T18:30:47.840Z"
+            "example": "2023-09-06T18:30:47.840Z"
           },
           "updatedAt": {
             "type": "string",
             "format": "date-time",
-            "example": "2023-08-09T18:31:22.235Z"
+            "example": "2023-09-06T18:31:22.235Z"
           }
         }
       },
@@ -2344,7 +2344,7 @@
           "deadline": {
             "type": "string",
             "description": "Card's deadline",
-            "example": "06/09/2023"
+            "example": "2023-09-30"
           },
           "column": {
             "type": "string",
@@ -2380,7 +2380,7 @@
           "deadline": {
             "type": "string",
             "description": "Card's deadline",
-            "example": "06/09/2023"
+            "example": "2023-09-30"
           },
           "column": {
             "type": "string",
@@ -2390,12 +2390,12 @@
           "createdAt": {
             "type": "string",
             "format": "date-time",
-            "example": "2023-08-09T18:30:47.840Z"
+            "example": "2023-09-06T18:30:47.840Z"
           },
           "updatedAt": {
             "type": "string",
             "format": "date-time",
-            "example": "2023-08-09T18:31:22.235Z"
+            "example": "2023-09-06T18:31:22.235Z"
           }
         }
       },
@@ -2422,7 +2422,7 @@
           "deadline": {
             "type": "string",
             "description": "Card's deadline",
-            "example": "06/09/2023"
+            "example": "2023-09-30"
           }
         }
       },
@@ -2453,7 +2453,7 @@
           "deadline": {
             "type": "string",
             "description": "Card's deadline",
-            "example": "06/09/2023"
+            "example": "2023-09-30"
           },
           "column": {
             "type": "string",
@@ -2463,12 +2463,12 @@
           "createdAt": {
             "type": "string",
             "format": "date-time",
-            "example": "2023-08-09T18:30:47.840Z"
+            "example": "2023-09-06T18:30:47.840Z"
           },
           "updatedAt": {
             "type": "string",
             "format": "date-time",
-            "example": "2023-08-09T18:31:22.235Z"
+            "example": "2023-09-06T18:31:22.235Z"
           }
         }
       },
@@ -2522,7 +2522,7 @@
           "deadline": {
             "type": "string",
             "description": "Card's deadline",
-            "example": "06/09/2023"
+            "example": "2023-09-30"
           },
           "column": {
             "type": "string",
@@ -2532,12 +2532,12 @@
           "createdAt": {
             "type": "string",
             "format": "date-time",
-            "example": "2023-08-09T18:30:47.840Z"
+            "example": "2023-09-06T18:30:47.840Z"
           },
           "updatedAt": {
             "type": "string",
             "format": "date-time",
-            "example": "2023-08-09T18:31:22.235Z"
+            "example": "2023-09-06T18:31:22.235Z"
           }
         }
       },
