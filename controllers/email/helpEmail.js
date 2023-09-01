@@ -1,6 +1,7 @@
 import { controllerWrapper } from "../../decorators/index.js";
 import { sendEmail } from "../../helpers/index.js";
 import { Message } from "../../models/index.js";
+import { HttpError } from "../../helpers/index.js";
 
 const helpEmail = async (req, res) => {
   const { name, _id: owner } = req.user;
@@ -17,6 +18,11 @@ const helpEmail = async (req, res) => {
     `,
   };
   await sendEmail(newEmail);
+
+  const sendingEmail = await sendEmail(newEmail);
+  if (!sendingEmail) {
+    throw HttpError(400, "Error sending email");
+  }
   await Message.create({ ...req.body, owner });
 
   res.json({
