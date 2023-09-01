@@ -689,7 +689,7 @@
         "security": [{ "Bearer": [] }],
         "responses": {
           "200": {
-            "description": "Successful operation, board by id get",
+            "description": "Successful operation, board by id received",
             "content": {
               "application/json": {
                 "schema": {
@@ -758,7 +758,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful operation, board updated",
+            "description": "Successful operation, board is updated",
             "content": {
               "application/json": {
                 "schema": {
@@ -888,7 +888,7 @@
         },
         "responses": {
           "201": {
-            "description": "Successful operation, new column added",
+            "description": "Successful operation, new column is added",
             "content": {
               "application/json": {
                 "schema": {
@@ -969,7 +969,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful operation, column updated",
+            "description": "Successful operation, column is updated",
             "content": {
               "application/json": {
                 "schema": {
@@ -1311,7 +1311,6 @@
           }
         }
       },
-
       "delete": {
         "tags": ["Cards"],
         "summary": "Delete card",
@@ -1329,11 +1328,11 @@
         "security": [{ "Bearer": [] }],
         "responses": {
           "200": {
-            "description": "Successful operation, column is deleted",
+            "description": "Successful operation, card is deleted",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DeleteColumnResponse"
+                  "$ref": "#/components/schemas/DeleteCardResponse"
                 }
               }
             }
@@ -1531,11 +1530,6 @@
       "CurrentUserResponse": {
         "type": "object",
         "properties": {
-          "_id": {
-            "type": "string",
-            "description": "User's id",
-            "example": "321b432324dc36545474"
-          },
           "name": {
             "type": "string",
             "description": "User's name",
@@ -1673,7 +1667,7 @@
           "avatar": {
             "type": "string",
             "description": "User's avatar",
-            "example": ""
+            "example": "https://res.cloudinary.com/task-pro/image/upload/v1693283150/avatars/64ed72852b4609bdb4c73cfb_test.routes%40enail.com.jpg"
           }
         }
       },
@@ -1914,7 +1908,7 @@
                     "title": "Second card",
                     "description": "This is the description of card",
                     "priority": "low",
-                    "deadline": "",
+                    "deadline": "2023-09-30T00:00:00.000Z",
                     "column": "64d5585cf10982f0832226f4",
                     "createdAt": "2023-09-06T08:12:36.110Z",
                     "updatedAt": "2023-09-06T08:12:36.110Z"
@@ -1934,7 +1928,7 @@
                     "title": "Next card",
                     "description": "This is the description of card",
                     "priority": "high",
-                    "deadline": "",
+                    "deadline": "2023-09-28T00:00:00.000Z",
                     "column": "64d5585cf10982f0832226f4",
                     "createdAt": "2023-09-06T08:12:40.524Z",
                     "updatedAt": "2023-09-06T08:12:40.524Z"
@@ -2255,7 +2249,7 @@
           "title": {
             "type": "string",
             "description": "Column's title",
-            "example": "First Column"
+            "example": "First Column changed"
           }
         }
       },
@@ -2270,7 +2264,7 @@
           "title": {
             "type": "string",
             "description": "Column's title",
-            "example": "First Column"
+            "example": "First Column changed"
           },
           "board": {
             "type": "string",
@@ -2343,7 +2337,7 @@
           },
           "deadline": {
             "type": "string",
-            "description": "Card's deadline",
+            "description": "Card's deadline. Should be data format (YYYY-MM-DD) or include valid separators: (YYYY/MM/DD), (YYYY.MM.DD), etc.",
             "example": "2023-09-30"
           },
           "column": {
@@ -2380,7 +2374,7 @@
           "deadline": {
             "type": "string",
             "description": "Card's deadline",
-            "example": "2023-09-30"
+            "example": "2023-09-30T00:00:00.000Z"
           },
           "column": {
             "type": "string",
@@ -2421,8 +2415,8 @@
           },
           "deadline": {
             "type": "string",
-            "description": "Card's deadline",
-            "example": "2023-09-30"
+            "description": "Card's deadline. Should be data format (YYYY-MM-DD) or include valid separators: (YYYY/MM/DD), (YYYY.MM.DD), etc.",
+            "example": "2023/10/03"
           }
         }
       },
@@ -2453,7 +2447,7 @@
           "deadline": {
             "type": "string",
             "description": "Card's deadline",
-            "example": "2023-09-30"
+            "example": "2023-10-03T00:00:00.000Z"
           },
           "column": {
             "type": "string",
@@ -2487,10 +2481,46 @@
       "MoveCardResponse": {
         "type": "object",
         "properties": {
+          "_id": {
+            "type": "string",
+            "description": "Card`s id",
+            "example": "64ed80b3c498b1c02dede12d"
+          },
+          "title": {
+            "type": "string",
+            "description": "Card's title",
+            "example": "First Card"
+          },
+          "description": {
+            "type": "string",
+            "description": "Card's description",
+            "example": "Description of the card"
+          },
+          "priority": {
+            "type": "string",
+            "description": "Card's priority",
+            "enum": ["without", "low", "medium", "high"],
+            "example": "low"
+          },
+          "deadline": {
+            "type": "string",
+            "description": "Card's deadline",
+            "example": "2023-10-03T00:00:00.000Z"
+          },
           "column": {
             "type": "string",
-            "description": "Updated column id",
+            "description": "Column id",
             "example": "64ed80b3c498b1c02dede12d"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2023-09-06T18:30:47.840Z"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2023-09-06T18:31:22.235Z"
           }
         }
       },
@@ -2522,7 +2552,7 @@
           "deadline": {
             "type": "string",
             "description": "Card's deadline",
-            "example": "2023-09-30"
+            "example": "2023-09-30T00:00:00.000Z"
           },
           "column": {
             "type": "string",
