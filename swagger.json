@@ -53,7 +53,7 @@
         },
         "responses": {
           "201": {
-            "description": "User created, registration successful",
+            "description": "Successful operation, new user created",
             "content": {
               "application/json": {
                 "schema": {
@@ -123,7 +123,7 @@
         },
         "responses": {
           "200": {
-            "description": "Login successful",
+            "description": "Successful operation, user is logged in",
             "content": {
               "application/json": {
                 "schema": {
@@ -183,7 +183,7 @@
         "security": [{ "Bearer": [] }],
         "responses": {
           "200": {
-            "description": "Successful operation, get current user",
+            "description": "Successful operation, current user received",
             "content": {
               "application/json": {
                 "schema": {
@@ -304,7 +304,7 @@
         "security": [{ "Bearer": [] }],
         "responses": {
           "204": {
-            "description": "Logout successful, no content"
+            "description": "Successful operation, user is logged out. No response content"
           },
           "401": {
             "description": "Not authorized",
@@ -500,7 +500,7 @@
         },
         "responses": {
           "200": {
-            "description": "Help successful",
+            "description": "Successful operation, email sent",
             "content": {
               "application/json": {
                 "schema": {
@@ -560,7 +560,7 @@
         "security": [{ "Bearer": [] }],
         "responses": {
           "200": {
-            "description": "Successful operation, boards list is got",
+            "description": "Successful operation, boards list received",
             "content": {
               "application/json": {
                 "schema": {
@@ -689,7 +689,7 @@
         "security": [{ "Bearer": [] }],
         "responses": {
           "200": {
-            "description": "Successful operation, board by id received",
+            "description": "Successful operation, board received",
             "content": {
               "application/json": {
                 "schema": {
@@ -758,7 +758,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful operation, board is updated",
+            "description": "Successful operation, board updated",
             "content": {
               "application/json": {
                 "schema": {
@@ -826,7 +826,7 @@
         "security": [{ "Bearer": [] }],
         "responses": {
           "200": {
-            "description": "Successful operation, board is deleted",
+            "description": "Successful operation, board deleted",
             "content": {
               "application/json": {
                 "schema": {
@@ -888,7 +888,7 @@
         },
         "responses": {
           "201": {
-            "description": "Successful operation, new column is added",
+            "description": "Successful operation, new column added",
             "content": {
               "application/json": {
                 "schema": {
@@ -969,7 +969,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful operation, column is updated",
+            "description": "Successful operation, column updated",
             "content": {
               "application/json": {
                 "schema": {
@@ -1037,7 +1037,7 @@
         "security": [{ "Bearer": [] }],
         "responses": {
           "200": {
-            "description": "Successful operation, column is deleted",
+            "description": "Successful operation, column deleted",
             "content": {
               "application/json": {
                 "schema": {
@@ -1180,7 +1180,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful operation, Card updated",
+            "description": "Successful operation, сard updated",
             "content": {
               "application/json": {
                 "schema": {
@@ -1259,7 +1259,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful operation, column is transferred",
+            "description": "Successful operation, card moved",
             "content": {
               "application/json": {
                 "schema": {
@@ -1328,7 +1328,7 @@
         "security": [{ "Bearer": [] }],
         "responses": {
           "200": {
-            "description": "Successful operation, card is deleted",
+            "description": "Successful operation, card deleted",
             "content": {
               "application/json": {
                 "schema": {
