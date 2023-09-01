@@ -15,7 +15,9 @@ export const addCardSchema = Joi.object({
       "string.base": "Field  priority must be a string",
       "any.only": "Field  priority must be one of {{#valids}}",
     }),
-  deadline: Joi.date().iso().allow("").optional(),
+  deadline: Joi.date().allow("").optional().messages({
+    "date.base": "Field deadline must be a valid date",
+  }),
   column: Joi.string().required().messages({
     "any.required": "Missing required column field",
   }),
@@ -34,7 +36,9 @@ export const updateCardSchema = Joi.object({
       "string.base": "Field  priority must be a string",
       "any.only": "Field  priority must be one of {{#valids}}",
     }),
-  deadline: Joi.date().iso(),
+  deadline: Joi.date().allow("").optional().messages({
+    "date.base": "Field deadline must be a valid date",
+  }),
 });
 
 export const moveCardSchema = Joi.object({
