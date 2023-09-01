@@ -142,6 +142,16 @@
               }
             }
           },
+          "401": {
+            "description": "Not authenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorUnauthenticateResponse"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Not found",
             "content": {
@@ -183,7 +193,7 @@
             }
           },
           "401": {
-            "description": "Not authorized (email or password is wrong)",
+            "description": "Not authorized",
             "content": {
               "application/json": {
                 "schema": {
@@ -254,7 +264,7 @@
             }
           },
           "401": {
-            "description": "Not authorized (email or password is wrong)",
+            "description": "Not authorized",
             "content": {
               "application/json": {
                 "schema": {
@@ -297,7 +307,7 @@
             "description": "Logout successful, no content"
           },
           "401": {
-            "description": "Not authorized (email or password is wrong)",
+            "description": "Not authorized",
             "content": {
               "application/json": {
                 "schema": {
@@ -368,7 +378,7 @@
             }
           },
           "401": {
-            "description": "Not authorized (email or password is wrong)",
+            "description": "Not authorized",
             "content": {
               "application/json": {
                 "schema": {
@@ -439,7 +449,7 @@
             }
           },
           "401": {
-            "description": "Not authorized (email or password is wrong)",
+            "description": "Not authorized",
             "content": {
               "application/json": {
                 "schema": {
@@ -510,7 +520,7 @@
             }
           },
           "401": {
-            "description": "Not authorized (email or password is wrong)",
+            "description": "Not authorized",
             "content": {
               "application/json": {
                 "schema": {
@@ -560,7 +570,7 @@
             }
           },
           "401": {
-            "description": "Not authorized (email or password is wrong)",
+            "description": "Not authorized",
             "content": {
               "application/json": {
                 "schema": {
@@ -629,7 +639,7 @@
             }
           },
           "401": {
-            "description": "Not authorized (email or password is wrong)",
+            "description": "Not authorized",
             "content": {
               "application/json": {
                 "schema": {
@@ -670,7 +680,7 @@
             "in": "path",
             "name": "id",
             "required": true,
-            "example": "64d360ea78fe376e4981199f",
+            "example": "64ed80b3c498b1c02dede12d",
             "schema": {
               "minimum": 1
             }
@@ -689,7 +699,7 @@
             }
           },
           "401": {
-            "description": "Not authorized (email or password is wrong)",
+            "description": "Not authorized",
             "content": {
               "application/json": {
                 "schema": {
@@ -728,7 +738,7 @@
             "in": "path",
             "name": "id",
             "required": true,
-            "example": "64d360ea78fe376e4981199f",
+            "example": "64ed80b3c498b1c02dede12d",
             "schema": {
               "minimum": 1
             }
@@ -768,7 +778,7 @@
             }
           },
           "401": {
-            "description": "Not authorized (email or password is wrong)",
+            "description": "Not authorized",
             "content": {
               "application/json": {
                 "schema": {
@@ -807,7 +817,7 @@
             "in": "path",
             "name": "id",
             "required": true,
-            "example": "64d360ea78fe376e4981569f",
+            "example": "64ed80b3c498b1c02dede12d",
             "schema": {
               "minimum": 1
             }
@@ -826,7 +836,7 @@
             }
           },
           "401": {
-            "description": "Not authorized (email or password is wrong)",
+            "description": "Not authorized",
             "content": {
               "application/json": {
                 "schema": {
@@ -898,7 +908,7 @@
             }
           },
           "401": {
-            "description": "Not authorized (email or password is wrong)",
+            "description": "Not authorized",
             "content": {
               "application/json": {
                 "schema": {
@@ -912,7 +922,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/errorNotFoundResponse"
+                  "$ref": "#/components/schemas/errorNotFoundBoardResponse"
                 }
               }
             }
@@ -939,7 +949,7 @@
             "in": "path",
             "name": "id",
             "required": true,
-            "example": "64d360ea78fe376e4981199f",
+            "example": "64ed80b3c498b1c02dede12d",
             "schema": {
               "minimum": 1
             }
@@ -979,7 +989,7 @@
             }
           },
           "401": {
-            "description": "Not authorized (email or password is wrong)",
+            "description": "Not authorized",
             "content": {
               "application/json": {
                 "schema": {
@@ -1018,7 +1028,7 @@
             "in": "path",
             "name": "id",
             "required": true,
-            "example": "64d360ea78fe376e4981569f",
+            "example": "64ed80b3c498b1c02dede12d",
             "schema": {
               "minimum": 1
             }
@@ -1037,7 +1047,7 @@
             }
           },
           "401": {
-            "description": "Not authorized (email or password is wrong)",
+            "description": "Not authorized",
             "content": {
               "application/json": {
                 "schema": {
@@ -1109,7 +1119,7 @@
             }
           },
           "401": {
-            "description": "Not authorized (email or password is wrong)",
+            "description": "Not authorized",
             "content": {
               "application/json": {
                 "schema": {
@@ -1123,7 +1133,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/errorNotFoundResponse"
+                  "$ref": "#/components/schemas/errorNotFoundColumnResponse"
                 }
               }
             }
@@ -1150,7 +1160,7 @@
             "in": "path",
             "name": "id",
             "required": true,
-            "example": "64d360ea78fe376e4981199f",
+            "example": "64ed80b3c498b1c02dede12d",
             "schema": {
               "minimum": 1
             }
@@ -1190,7 +1200,7 @@
             }
           },
           "401": {
-            "description": "Not authorized (email or password is wrong)",
+            "description": "Not authorized",
             "content": {
               "application/json": {
                 "schema": {
@@ -1229,7 +1239,7 @@
             "in": "path",
             "name": "id",
             "required": true,
-            "example": "64d360ea78fe376e4981199f",
+            "example": "64ed80b3c498b1c02dede12d",
             "schema": {
               "minimum": 1
             }
@@ -1269,7 +1279,7 @@
             }
           },
           "401": {
-            "description": "Not authorized (email or password is wrong)",
+            "description": "Not authorized",
             "content": {
               "application/json": {
                 "schema": {
@@ -1288,6 +1298,7 @@
               }
             }
           },
+
           "500": {
             "description": "Internal Server Error",
             "content": {
@@ -1309,7 +1320,7 @@
             "in": "path",
             "name": "id",
             "required": true,
-            "example": "64d360ea78fe376e4981569f",
+            "example": "64ed80b3c498b1c02dede12d",
             "schema": {
               "minimum": 1
             }
@@ -1328,7 +1339,7 @@
             }
           },
           "401": {
-            "description": "Not authorized (email or password is wrong)",
+            "description": "Not authorized",
             "content": {
               "application/json": {
                 "schema": {
@@ -1820,7 +1831,7 @@
               "icon-board-icon-7",
               "icon-board-icon-8"
             ],
-            "example": "icon-hexagon"
+            "example": "icon-board-icon-1"
           },
           "background": {
             "type": "string",
@@ -2137,53 +2148,55 @@
       "DeleteBoardResponse": {
         "type": "object",
         "properties": {
-          "type": "object",
-          "properties": {
-            "_id": {
-              "type": "string",
-              "description": "Board id",
-              "example": "64ed80b3c498b1c02dede12d"
-            },
-            "title": {
-              "type": "string",
-              "description": "Board's title",
-              "example": "New Board"
-            },
-            "icon": {
-              "type": "string",
-              "description": "Board's icon",
-              "enum": [
-                "icon-board-icon-1",
-                "icon-board-icon-2",
-                "icon-board-icon-3",
-                "icon-board-icon-4",
-                "icon-board-icon-5",
-                "icon-board-icon-6",
-                "icon-board-icon-7",
-                "icon-board-icon-8"
-              ],
-              "example": "icon-board-icon-3"
-            },
-            "background": {
-              "type": "string",
-              "description": "Board's background title",
-              "example": "fullmoon"
-            },
-            "owner": {
-              "type": "string",
-              "description": "User's id",
-              "example": "64d11ad3b31bb700519dad42"
-            },
-            "createdAt": {
-              "type": "string",
-              "format": "date-time",
-              "example": "2023-08-09T18:30:47.840Z"
-            },
-            "updatedAt": {
-              "type": "string",
-              "format": "date-time",
-              "example": "2023-08-09T18:31:22.235Z"
-            }
+          "_id": {
+            "type": "string",
+            "description": "Board id",
+            "example": "64ed80b3c498b1c02dede12d"
+          },
+          "title": {
+            "type": "string",
+            "description": "Board's title",
+            "example": "New Board"
+          },
+          "icon": {
+            "type": "string",
+            "description": "Board's icon",
+            "enum": [
+              "icon-board-icon-1",
+              "icon-board-icon-2",
+              "icon-board-icon-3",
+              "icon-board-icon-4",
+              "icon-board-icon-5",
+              "icon-board-icon-6",
+              "icon-board-icon-7",
+              "icon-board-icon-8"
+            ],
+            "example": "icon-board-icon-3"
+          },
+          "background": {
+            "type": "string",
+            "description": "Board's background title",
+            "example": "fullmoon"
+          },
+          "backgroundURL": {
+            "type": "string",
+            "description": "Board's background URL from Cloudinary",
+            "example": "https://res.cloudinary.com/task-pro/image/upload/v1692957357/backgrounds/mountains-desktop.jpg"
+          },
+          "owner": {
+            "type": "string",
+            "description": "User's id",
+            "example": "64d11ad3b31bb700519dad42"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2023-08-09T18:30:47.840Z"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2023-08-09T18:31:22.235Z"
           }
         }
       },
@@ -2280,33 +2293,30 @@
       "DeleteColumnResponse": {
         "type": "object",
         "properties": {
-          "type": "object",
-          "properties": {
-            "_id": {
-              "type": "string",
-              "description": "Column id",
-              "example": "64ed80b3c498b1c02dede12d"
-            },
-            "title": {
-              "type": "string",
-              "description": "Column's title",
-              "example": "First Column"
-            },
-            "board": {
-              "type": "string",
-              "description": "Board id",
-              "example": "64ed80b3c498b1c02dede12d"
-            },
-            "createdAt": {
-              "type": "string",
-              "format": "date-time",
-              "example": "2023-08-09T18:30:47.840Z"
-            },
-            "updatedAt": {
-              "type": "string",
-              "format": "date-time",
-              "example": "2023-08-09T18:31:22.235Z"
-            }
+          "_id": {
+            "type": "string",
+            "description": "Column id",
+            "example": "64ed80b3c498b1c02dede12d"
+          },
+          "title": {
+            "type": "string",
+            "description": "Column's title",
+            "example": "First Column"
+          },
+          "board": {
+            "type": "string",
+            "description": "Board id",
+            "example": "64ed80b3c498b1c02dede12d"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2023-08-09T18:30:47.840Z"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2023-08-09T18:31:22.235Z"
           }
         }
       },
@@ -2538,7 +2548,7 @@
           "message": {
             "type": "string",
             "description": "Error message",
-            "example": "Board {id} not found"
+            "example": "No board found"
           }
         }
       },
@@ -2548,7 +2558,7 @@
           "message": {
             "type": "string",
             "description": "Error message",
-            "example": "Column {id} not found"
+            "example": "No column found"
           }
         }
       },
@@ -2558,7 +2568,7 @@
           "message": {
             "type": "string",
             "description": "Error message",
-            "example": "Card {id} not found"
+            "example": "No card found"
           }
         }
       },
@@ -2569,7 +2579,7 @@
           "message": {
             "type": "string",
             "description": "Error message",
-            "example": "This text will describe what is wrong with the request body"
+            "example": "The specific request body error will be described here."
           }
         }
       },
@@ -2579,7 +2589,7 @@
           "message": {
             "type": "string",
             "description": "Error message",
-            "example": "Email has already in use"
+            "example": "Email already in use"
           }
         }
       },
@@ -2590,6 +2600,16 @@
             "type": "string",
             "description": "Error message",
             "example": "Not authorized"
+          }
+        }
+      },
+      "errorUnauthenticateResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Error message",
+            "example": "Email or password is wrong"
           }
         }
       },
@@ -2609,7 +2629,7 @@
           "message": {
             "type": "string",
             "description": "Error message",
-            "example": "This text will describe what is wrong with the internal server"
+            "example": "The specific server error will be described here."
           }
         }
       }
