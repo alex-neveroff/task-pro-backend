@@ -8,7 +8,7 @@ const updateCard = async (req, res) => {
     new: true,
   });
   if (!updatedCard) {
-    throw HttpError(404);
+    throw HttpError(404, "No card found");
   }
   res.status(200).json(updatedCard);
 };

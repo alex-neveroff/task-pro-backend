@@ -8,7 +8,7 @@ const deleteColumn = async (req, res) => {
   const deleteCards = await Card.deleteMany({ column: { $in: columnId } });
   const deleteCurrentColumn = await Column.findByIdAndDelete(columnId);
   if (!deleteCurrentColumn || !deleteCards) {
-    throw HttpError(404);
+    throw HttpError(404, "No column found");
   }
   res.json(deleteCurrentColumn);
 };

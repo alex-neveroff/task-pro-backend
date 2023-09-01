@@ -5,6 +5,10 @@ import { Board, Column, Card } from "../../models/index.js";
 const deleteBoard = async (req, res) => {
   const { boardId } = req.params;
 
+  const currentBoard = await Board.findById(boardId);
+  if (!currentBoard) {
+    throw HttpError(404, "No board found");
+  }
   const columns = await Column.find({ board: boardId });
   const ArrColumnIds = columns.map((column) => column._id);
   const deleteCards = await Card.deleteMany({ column: { $in: ArrColumnIds } });

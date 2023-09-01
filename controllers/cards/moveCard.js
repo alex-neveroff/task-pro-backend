@@ -25,7 +25,7 @@ const moveCard = async (req, res) => {
     }
   );
   if (!movedCard) {
-    throw HttpError(404);
+    throw HttpError(404, "No card found");
   }
   res.status(200).json(movedCard);
 };

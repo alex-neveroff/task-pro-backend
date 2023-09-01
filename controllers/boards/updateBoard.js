@@ -8,8 +8,9 @@ const updateBoard = async (req, res) => {
   const { background: newbackground } = req.body;
   const board = await Board.findById(boardId, "background");
   if (!board) {
-    throw HttpError(404);
+    throw HttpError(404, "No board found");
   }
+
   const oldBackground = board.background;
   const currentSession = await Session.findOne({ token }, "display");
   if (!currentSession) {
