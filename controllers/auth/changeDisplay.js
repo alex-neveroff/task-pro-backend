@@ -22,7 +22,10 @@ const changeDisplay = async (req, res) => {
     }
     userBoards.forEach(async (board) => {
       const { background, _id: boardId } = board;
-      const backgroundURL = await getBackground(background, newDisplay);
+      let backgroundURL = "";
+      if (background) {
+        backgroundURL = await getBackground(background, newDisplay);
+      }
       await Board.findByIdAndUpdate(boardId, { backgroundURL });
     });
   }

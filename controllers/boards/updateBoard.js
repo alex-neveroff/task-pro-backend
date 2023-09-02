@@ -16,13 +16,17 @@ const updateBoard = async (req, res) => {
   if (!currentSession) {
     throw HttpError(404, "The session has expired. Try to relogin.");
   }
-
   const display = currentSession.display;
-  let backgroundURL = "";
-
+  let backgroundURL;
   if (newbackground && newbackground !== oldBackground) {
     backgroundURL = await getBackground(newbackground, display);
-  } else backgroundURL = board.backgroundURL;
+  }
+  if (newbackground && newbackground === oldBackground) {
+    backgroundURL = board.backgroundURL;
+  }
+  if (!newbackground) {
+    backgroundURL = "";
+  }
 
   const updatedBoard = await Board.findByIdAndUpdate(
     boardId,
