@@ -18,6 +18,9 @@ const addCard = async (req, res) => {
   if (!newCard) {
     throw HttpError(400);
   }
+  await Column.findByIdAndUpdate(columnId, {
+    $push: { orderCards: newCard._id },
+  });
   res.status(201).json(newCard);
 };
 

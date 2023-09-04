@@ -4,7 +4,11 @@ import { Board } from "../../models/index.js";
 
 const getAllBoards = async (req, res) => {
   const { _id: owner } = req.user;
-  const allUserBoards = await Board.find({ owner }, "-createdAt -updatedAt");
+  const allUserBoards = await Board.find(
+    { owner },
+    "-createdAt -updatedAt"
+  ).sort({ createdAt: -1 });
+
   if (!allUserBoards) {
     throw HttpError(404);
   }
