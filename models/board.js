@@ -22,10 +22,6 @@ const boardSchema = new Schema(
       enum: iconsList,
       default: "icon-board-icon-1",
     },
-    orderColumns: {
-      type: Array,
-      default: [],
-    },
     owner: {
       type: Schema.Types.ObjectId,
       ref: "user",

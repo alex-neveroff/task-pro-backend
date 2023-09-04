@@ -1890,6 +1890,12 @@
                 "_id": "64d5585cf10982f0832226f4",
                 "title": "Column",
                 "board": "64d52e77846f3f325f35b8f0",
+                "orderColumns": [
+                  "64d8901109b4e55ec6255983",
+                  "64d8907409b4e55ec6255990",
+                  "64d88e0d09b4e55ec625596c",
+                  "64d8907809b4e55ec6255994"
+                ],
                 "createdAt": "2023-09-06T21:36:28.801Z",
                 "updatedAt": "2023-09-06T08:13:04.104Z",
                 "cards": [
@@ -2229,6 +2235,11 @@
             "description": "Board id",
             "example": "64ed80b3c498b1c02dede12d"
           },
+          "orderCards": {
+            "type": "array",
+            "description": "Card's list of current column",
+            "example": []
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time",
@@ -2475,6 +2486,11 @@
             "type": "string",
             "description": "Destination column id",
             "example": "64ed80b3c498b1c02dede12d"
+          },
+          "index": {
+            "type": "number",
+            "description": "Index card in destination column",
+            "example": 1
           }
         }
       },

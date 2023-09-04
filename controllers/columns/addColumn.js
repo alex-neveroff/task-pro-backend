@@ -17,9 +17,6 @@ const addColumn = async (req, res) => {
   if (!addedColumn) {
     throw HttpError(400);
   }
-  await Board.findByIdAndUpdate(boardId, {
-    $push: { orderColumns: addedColumn._id },
-  });
   res.status(201).json(addedColumn);
 };
 
