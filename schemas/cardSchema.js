@@ -42,7 +42,13 @@ export const updateCardSchema = Joi.object({
 });
 
 export const moveCardSchema = Joi.object({
-  column: Joi.string().required().messages({
+  currentColumn: Joi.string().required().messages({
     "any.required": "Missing required column field",
+  }),
+  destinationColumn: Joi.string().required().messages({
+    "any.required": "Missing required column field",
+  }),
+  newIndex: Joi.number().required().messages({
+    "any.required": "Missing required index field",
   }),
 });

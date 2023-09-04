@@ -5,28 +5,48 @@ import { Types } from "mongoose";
 
 const moveCard = async (req, res) => {
   const { cardId } = req.params;
-  const { column: columnId } = req.body;
 
-  if (!Types.ObjectId.isValid(columnId)) {
+  const {
+    currentColumn: currentColumnId,
+    destinationColumn: destinationColumnId,
+    newIndex,
+  } = req.body;
+
+  const currentCardId = new Types.ObjectId(cardId);
+
+  if (!currentColumnId) {
     throw HttpError(400, "Invalid column ID");
   }
-  const destinationColumn = await Column.findById(columnId);
+
+  const currentColumn = await Column.findById(currentColumnId);
+  if (!currentColumn) {
+    throw HttpError(404, "Current column not found");
+  }
+
+  const destinationColumn = await Column.findById(destinationColumnId);
   if (!destinationColumn) {
     throw HttpError(404, "Destination column not found");
   }
 
+  const updatedOrderCards = currentColumn.orderCards.filter(
+    (orderId) => orderId.toString() !== currentCardId.toString()
+  );
+  currentColumn.orderCards = updatedOrderCards;
+  await currentColumn.save();
+
+  await Column.findByIdAndUpdate(destinationColumn, {
+    $push: { orderCards: { $each: [cardId], $position: newIndex } },
+  });
   const movedCard = await Card.findOneAndUpdate(
     { _id: cardId },
     {
-      column: columnId,
+      column: destinationColumnId,
     },
     {
       new: true,
     }
   );
-  if (!movedCard) {
-    throw HttpError(404, "No card found");
-  }
+
   res.status(200).json(movedCard);
 };
 

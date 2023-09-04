@@ -5,7 +5,6 @@ import { Types } from "mongoose";
 
 const addColumn = async (req, res) => {
   const { board: boardId } = req.body;
-
   if (!Types.ObjectId.isValid(boardId)) {
     throw HttpError(400, "Invalid board ID");
   }
@@ -18,6 +17,9 @@ const addColumn = async (req, res) => {
   if (!addedColumn) {
     throw HttpError(400);
   }
+  await Board.findByIdAndUpdate(boardId, {
+    $push: { orderColumns: addedColumn._id },
+  });
   res.status(201).json(addedColumn);
 };
 

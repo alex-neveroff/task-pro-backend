@@ -12,6 +12,10 @@ const columnSchema = new Schema(
       required: [true, "Board assignment for the column is required"],
       ref: "board",
     },
+    orderCards: {
+      type: Array,
+      default: [],
+    },
   },
   { versionKey: false, timestamps: true }
 );
