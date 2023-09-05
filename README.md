@@ -4,13 +4,12 @@ This repository is a Backend part of the TaskPro project, which is designed to c
 
 ## Technologies used on the Backend
 
-![Node.js](https://img.shields.io/badge/Node.js-18.16.0-blue)
-![Express.js](https://img.shields.io/badge/Express.js-4.17.1-yellow)
-![MongoDB](https://img.shields.io/badge/MongoDB-7.0-green)
-![Mongoose](https://img.shields.io/badge/Mongoose-7.3.4-cyan)
-
+- ![Node.js](https://img.shields.io/badge/Node.js-18.16.0-blue)
+- ![Express.js](https://img.shields.io/badge/Express.js-4.17.1-yellow)
+- ![MongoDB](https://img.shields.io/badge/MongoDB-7.0-green)
+- ![Mongoose](https://img.shields.io/badge/Mongoose-7.3.4-cyan)
 - ![Mongoose Deep Populate](https://img.shields.io/badge/Mongoose%20Deep%20Populate-3.2.0-darkGreen)
-- ![Json Web Token](https://img.shields.io/badge/jsonwebtoken-9.0.1-orange)
+- ![Json Web Token](https://img.shields.io/badge/JSON%20Web%20Token-9.0.1-orange)
 - ![Bcrypt](https://img.shields.io/badge/Bcrypt-2.4.3-lime)
 - ![Cloudinary](https://img.shields.io/badge/Cloudinary-1.40.0-red)
 - ![Joi](https://img.shields.io/badge/Joi-17.10.0-indigo)
@@ -19,9 +18,9 @@ This repository is a Backend part of the TaskPro project, which is designed to c
 - ![Multer Storage Cloudinary](https://img.shields.io/badge/Multer%20Storage%20Cloudinary-4.0.0-maroon)
 - ![CORS](https://img.shields.io/badge/CORS-2.8.5-darkBlue)
 - ![Cross-env](https://img.shields.io/badge/Cross--env-7.0.3-gold)
-- ![SendGrid](https://img.shields.io/badge/%40sendgrid%2Fmail-7.7.0-purple)
+- ![SendGrid](https://img.shields.io/badge/SendGrid-7.7.0-purple)
 - ![Dotenv](https://img.shields.io/badge/Dotenv-16.3.1-silver)
-- ![Swagger UI](https://img.shields.io/badge/Swagger%20UI-5.0.0-brown)
+- ![Swagger](https://img.shields.io/badge/Swagger-5.0.0-brown)
 - ![Nodemon](https://img.shields.io/badge/Nodemon-2.0.15-lightGray)
 
 ## To use the Backend you need
