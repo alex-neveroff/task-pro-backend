@@ -8,7 +8,7 @@ This repository is a Backend part of the TaskPro project, which is designed to c
 - [![Frontend Deploy](https://img.shields.io/badge/Frontend%20Deploy-yellow?style=for-the-badge&logo=github)](https://korvan17.github.io/task-pro/)
 - [![Backend GitHub](https://img.shields.io/badge/Backend%20GitHub-green?style=for-the-badge&logo=github)](https://github.com/alex-neveroff/task-pro-backend)
 - [![Backend Deploy](https://img.shields.io/badge/Backend%20Deploy-red?style=for-the-badge&logo=onrender.com)](https://task-pro-backend-4y7p.onrenderdotcom/)
-- [![Swagger](https://img.shields.io/badge/Swagger-pink?style=for-the-badge&logo=swagger)](https://task-pro-backend-4y7p.onrender.com/api-docs/)
+- [![Swagger](https://img.shields.io/badge/Swagger-blue?style=for-the-badge&logo=swagger)](https://task-pro-backend-4y7p.onrender.com/api-docs/)
 
 ## Technologies used on the Backend
 
