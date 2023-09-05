@@ -38,7 +38,7 @@ This repository is a Backend part of the TaskPro project, which is designed to c
 ## API Endpoints
 
 A detailed description of requests, responses, and schemas can be found in the
-[Swagger TaskPro Project](https://task-pro-backend-4y7p.onrender.com/api-docs/){:target=`_blank`}.
+[Swagger TaskPro Project](https://task-pro-backend-4y7p.onrender.com/api-docs/).
 
 ### Endpoints for Users
 
