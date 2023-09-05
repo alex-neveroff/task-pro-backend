@@ -4,7 +4,7 @@ This repository is a Backend part of the TaskPro project, which is designed to c
 
 ## Technologies used on the Backend
 
-- ![Node.js](https://img.shields.io/badge/Node.js-<18.16.0>-<blue>)
+- ![Node.js](https://img.shields.io/badge/Node.js-18.16.0-blue)
 - ![Express.js](https://img.shields.io/badge/Express.js-<4.17.1>-<yellow>)
 - ![MongoDB](https://img.shields.io/badge/MongoDB-<7.0>-<green>)
 - ![Mongoose](https://img.shields.io/badge/Mongoose-<7.3.4>-<cyan>)
