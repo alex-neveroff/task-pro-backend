@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
 import { handleMongooseError, validateAtUpdate } from "../middlewars/index.js";
-import { displayList } from "../constants/index.js";
+import { displayList, sessionTime } from "../constants/index.js";
 
 const sessionSchema = new Schema(
   {
@@ -20,7 +20,7 @@ const sessionSchema = new Schema(
   },
   { versionKey: false, timestamps: true }
 );
-// sessionSchema.index({ createdAt: 1 }, { expireAfterSeconds: 25 * 60 * 60 });
+sessionSchema.index({ createdAt: 1 }, { expireAfterSeconds: sessionTime });
 
 sessionSchema.pre("findOneAndUpdate", validateAtUpdate);
 sessionSchema.post("findOneAndUpdate", handleMongooseError);

@@ -1,6 +1,7 @@
 import { User, Session, Board } from "../../models/index.js";
 import { HttpError, getBackground } from "../../helpers/index.js";
 import { controllerWrapper } from "../../decorators/index.js";
+import { tokenTime } from "../../constants/index.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
@@ -21,7 +22,7 @@ const login = async (req, res) => {
   const payload = {
     id: user._id,
   };
-  const token = jwt.sign(payload, JWT_SECRET, { expiresIn: "24h" });
+  const token = jwt.sign(payload, JWT_SECRET, { expiresIn: tokenTime });
   const userBoards = await Board.find({ owner: user._id });
   userBoards.forEach(async (board) => {
     const { background, _id } = board;

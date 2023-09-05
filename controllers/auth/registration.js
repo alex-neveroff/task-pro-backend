@@ -1,6 +1,7 @@
 import { User, Session } from "../../models/index.js";
 import { HttpError } from "../../helpers/index.js";
 import { controllerWrapper } from "../../decorators/index.js";
+import { tokenTime } from "../../constants/index.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
@@ -23,7 +24,7 @@ const register = async (req, res) => {
   const payload = {
     id: newUser._id,
   };
-  const token = jwt.sign(payload, JWT_SECRET, { expiresIn: "24h" });
+  const token = jwt.sign(payload, JWT_SECRET, { expiresIn: tokenTime });
   await User.findByIdAndUpdate(newUser._id, { token });
   await Session.create({ token, email, display });
 
