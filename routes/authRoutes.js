@@ -32,7 +32,6 @@ authRouter.get("/current", authenticate, getCurrent);
 
 authRouter.put(
   "/update",
-  isEmptyBody,
   authenticate,
   uploadCloud.single("avatar"),
   validateBody(updateUserSchema),

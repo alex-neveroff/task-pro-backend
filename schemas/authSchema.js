@@ -100,7 +100,6 @@ export const updateUserSchema = Joi.object({
     "string.max": "Field password must be no more than 64 characters long",
     "string.pattern.base": "Field password not valid",
   }),
-  theme: Joi.string().valid(...themeList),
 });
 
 export const themeSchema = Joi.object({
