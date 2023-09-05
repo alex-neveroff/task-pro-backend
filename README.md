@@ -4,14 +4,14 @@ This repository is a Backend part of the TaskPro project, which is designed to c
 
 ## Technologies used on the Backend
 
-- ![Node.js](https://img.shields.io/badge/Node.js-<18.16.0>-<Blue>)
-- ![Express.js](https://img.shields.io/badge/Express.js-<4.17.1>-<Yellow>)
-- ![MongoDB](https://img.shields.io/badge/MongoDB-<7.0>-<Green>)
-- ![Mongoose](https://img.shields.io/badge/Mongoose-<7.3.4>-<Cyan>)
-- ![Mongoose deep populate](https://img.shields.io/badge/mongoose-deep-populate-<3.2.0>-<DarkGreen>)
-- ![Json Web Token](https://img.shields.io/badge/jsonwebtoken-<9.0.1>-<Orange>)
-- ![Bcrypt](https://img.shields.io/badge/Bcrypt-<2.4.3>-<Lime>)
-- ![Cloudinary](https://img.shields.io/badge/Cloudinary-<1.40.0>-<Red>)
+- ![Node.js](https://img.shields.io/badge/Node.js-<18.16.0>-<blue>)
+- ![Express.js](https://img.shields.io/badge/Express.js-<4.17.1>-<yellow>)
+- ![MongoDB](https://img.shields.io/badge/MongoDB-<7.0>-<green>)
+- ![Mongoose](https://img.shields.io/badge/Mongoose-<7.3.4>-<cyan>)
+- ![Mongoose Deep Populate](https://img.shields.io/badge/Mongoose%20Deep%20Populate-<3.2.0>-<darkGreen>)
+- ![Json Web Token](https://img.shields.io/badge/jsonwebtoken-<9.0.1>-<orange>)
+- ![Bcrypt](https://img.shields.io/badge/Bcrypt-<2.4.3>-<lime>)
+- ![Cloudinary](https://img.shields.io/badge/Cloudinary-<1.40.0>-<red>)
 - ![Joi](https://img.shields.io/badge/Joi-<17.10.0>-<Indigo>)
 - ![Morgan](https://img.shields.io/badge/Morgan-<1.10.0>-<Pink>)
 - ![Multer](https://img.shields.io/badge/Multer-<1.4.5>-<DarkGray>)
@@ -38,7 +38,7 @@ This repository is a Backend part of the TaskPro project, which is designed to c
 ## API Endpoints
 
 A detailed description of requests, responses, and schemas can be found in the
-[Swagger TaskPro Project](https://task-pro-backend-4y7p.onrender.com/api-docs/).
+[Swagger TaskPro Project](https://task-pro-backend-4y7p.onrender.com/api-docs/){:target="\_blank"}.
 
 ### Endpoints for Users
 
