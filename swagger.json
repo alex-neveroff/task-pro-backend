@@ -2,8 +2,8 @@
   "openapi": "3.0.1",
   "info": {
     "version": "2.0.2",
-    "title": "Swagger Task-pro Project",
-    "description": "Routes of Task-pro backend"
+    "title": "Swagger TaskPro Project",
+    "description": "Routes of TaskPro backend"
   },
   "consumes": ["application/json"],
   "produces": ["application/json"],
