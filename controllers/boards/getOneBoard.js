@@ -83,6 +83,19 @@ const getOneBoard = async (req, res) => {
   if (!board) {
     throw HttpError(404);
   }
+
+  board[0].columns.forEach((column) => {
+    if (column.cards && column.cards.length > 0) {
+      const sortedCards = column.orderCards.map((cardId) => {
+        const foundCard = column.cards.find(
+          (card) => card && card._id.toString() === cardId.toString()
+        );
+        return foundCard;
+      });
+      column.cards = sortedCards;
+    }
+  });
+
   res.json(board[0]);
 };
 
