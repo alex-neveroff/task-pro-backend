@@ -15,7 +15,7 @@ export const iconsList = [
 
 export const backgroundsList = [
   "tree",
-  "triler",
+  "trailer",
   "spheres",
   "semimoon",
   "sea",
