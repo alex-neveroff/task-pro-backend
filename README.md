@@ -7,8 +7,8 @@ This repository is a Backend part of the TaskPro project, which is designed to c
 - [![Frontend GitHub](https://img.shields.io/badge/Frontend%20GitHub-blue?style=for-the-badge&logo=github)](https://github.com/korvan17/task-pro)
 - [![Frontend Deploy](https://img.shields.io/badge/Frontend%20Deploy-yellow?style=for-the-badge&logo=github)](https://korvan17.github.io/task-pro/)
 - [![Backend GitHub](https://img.shields.io/badge/Backend%20GitHub-green?style=for-the-badge&logo=github)](https://github.com/alex-neveroff/task-pro-backend)
-- [![Backend Deploy](https://img.shields.io/badge/onrender.com-%20-%23FF6F61?style=for-the-badge)](https://task-pro-backend-4y7p.onrender.com/)
-- [![Swagger](https://img.shields.io/badge/Swagger-%20-%236f42c1?style=for-the-badge)](https://task-pro-backend-4y7p.onrender.com/api-docs/)
+- [![Backend Deploy](https://img.shields.io/badge/Backend%20Deploy-%20-%23FF6F61?style=for-the-badge&logo=onrender.com)](https://task-pro-backend-4y7p.onrender.com/)
+- [![Swagger](https://img.shields.io/badge/Swagger-gold?style=for-the-badge&logo=swagger)](https://task-pro-backend-4y7p.onrender.com/api-docs/)
 
 ## Technologies used on the Backend
 
