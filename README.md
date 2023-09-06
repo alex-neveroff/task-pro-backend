@@ -67,3 +67,20 @@ A detailed description of requests, responses, and schemas can be found in the
 ### Endpoints for Email
 
 <img src="https://res.cloudinary.com/task-pro/image/upload/v1693912932/samples/email.jpg" alt="TaskPro API Endpoints for Users" width="500" height="101">
+
+## Our team
+
+- ![Ivan Korniienko](https://img.shields.io/badge/Ivan%20Korniienko-Team%20Lead%20Frontend-green-Frontend%20Developer-blue)
+
+Ivan Korniienko - Team Lead Frontend / Frontend Developer
+Oleksandr Neverov - Team Lead Backend / Backend Developer
+Oleh Bilous - Scrum Master / Backend Developer
+Yelyzaveta Diachenko - Frontend Developer
+Pylypenko Pavlo - Frontend Developer
+Yurii Soroka - Frontend Developer
+Pavlo Bakmaiev - Frontend Developer
+Oleksandr Tsymbaliuk - Frontend Developer
+Vasyl Myroniuk - Frontend Developer
+Oleh Syvonenko - Frontend Developer
+Vitalii Sydorenko - Frontend Developer
+Savelii Helzhynskyi - Frontend Developer
