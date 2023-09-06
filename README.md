@@ -73,8 +73,8 @@ A detailed description of requests, responses, and schemas can be found in the
 - ![Ivan Korniienko](https://img.shields.io/badge/Ivan%20Korniienko-Team%20Lead%20Frontend-green) ![Frontend Developer](https://img.shields.io/badge/Frontend%20Developer-blue)
 - ![Oleksandr Neverov](https://img.shields.io/badge/Oleksandr%20Neverov-Team%20Lead%20FBackend-green) ![Backend Developer](https://img.shields.io/badge/Backend%20Developer-red)
 - ![Oleh Bilous](https://img.shields.io/badge/Oleh%20Bilous-Scrum%20Master-gold) ![Backend Developer](https://img.shields.io/badge/Backend%20Developer-red)
-- ![Yelyzaveta Diachenko](https://img.shields.io/badge/Yelyzaveta%20Diachenko-Frontend%20Developer-blue) [![GitHub Logo](https://img.shields.io/badge/github-logo-link.png?style=for-the-badge&logo=github)]()
-  [![LinkedIn Logo](https://img.shields.io/badge/linkedIn-logo-link?style=for-the-badge&logo=linkedin)]()
+- ![Yelyzaveta Diachenko](https://img.shields.io/badge/Yelyzaveta%20Diachenko-Frontend%20Developer-blue) [![](https://img.shields.io/badge/github-logo-link.png?style=for-the-badge&logo=github)]()
+  [![](https://img.shields.io/badge/linkedIn-logo-link?style=for-the-badge&logo=linkedin)]()
 
 - ![Pavlo Pylypenko](https://img.shields.io/badge/Pavlo%20Pylypenko-Frontend%20Developer-blue)
 - ![Yurii Soroka](https://img.shields.io/badge/Yurii%20Soroka-Frontend%20Developer-blue)
