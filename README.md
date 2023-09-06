@@ -72,6 +72,8 @@ A detailed description of requests, responses, and schemas can be found in the
 
 - ![Ivan Korniienko](https://img.shields.io/badge/Ivan%20Korniienko-Team%20Lead%20Frontend-green-Frontend%20Developer-blue)
 
+- ![Ivan Korniienko](https://img.shields.io/badge/Ivan%20Korniienko-Team%20Lead%20Frontend-green) ![Frontend Developer](https://img.shields.io/badge/Frontend%20Developer-blue)
+
 - ![Yelyzaveta Diachenko](https://img.shields.io/badge/Yelyzaveta%20Diachenko-Frontend%20Developer-blue)
 
 Ivan Korniienko - Team Lead Frontend / Frontend Developer
