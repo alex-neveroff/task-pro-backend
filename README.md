@@ -73,7 +73,9 @@ A detailed description of requests, responses, and schemas can be found in the
 - ![Ivan Korniienko](https://img.shields.io/badge/Ivan%20Korniienko-Team%20Lead%20Frontend-green) ![Frontend Developer](https://img.shields.io/badge/Frontend%20Developer-blue)
 - ![Oleksandr Neverov](https://img.shields.io/badge/Oleksandr%20Neverov-Team%20Lead%20FBackend-green) ![Backend Developer](https://img.shields.io/badge/Backend%20Developer-red)
 - ![Oleh Bilous](https://img.shields.io/badge/Oleh%20Bilous-Scrum%20Master-gold) ![Backend Developer](https://img.shields.io/badge/Backend%20Developer-red)
-- ![Yelyzaveta Diachenko](https://img.shields.io/badge/Yelyzaveta%20Diachenko-Frontend%20Developer-blue)[![GitHub](https://img.shields.io/badge/GitHub-Profile-green)]() [![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-blue)]()
+<!-- - ![Yelyzaveta Diachenko](https://img.shields.io/badge/Yelyzaveta%20Diachenko-Frontend%20Developer-blue) ![GitHub Logo](https://github.com/github-logo-link.png) ![LinkedIn Logo](https://linkedin.com/linkedin-logo-link.png) -->
+
+- ![Yelyzaveta Diachenko](https://img.shields.io/badge/Yelyzaveta%20Diachenko-Frontend%20Developer-blue) [![GitHub](https://img.shields.io/badge/GitHub-Profile-green)](https://github.com/your-github-profile-link) [![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-blue)](https://linkedin.com/in/your-linkedin-profile-link)
 
 - ![Pavlo Pylypenko](https://img.shields.io/badge/Pavlo%20Pylypenko-Frontend%20Developer-blue)
 - ![Yurii Soroka](https://img.shields.io/badge/Yurii%20Soroka-Frontend%20Developer-blue)
