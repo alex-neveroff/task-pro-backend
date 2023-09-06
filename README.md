@@ -74,17 +74,16 @@ A detailed description of requests, responses, and schemas can be found in the
 
 - ![Ivan Korniienko](https://img.shields.io/badge/Ivan%20Korniienko-Team%20Lead%20Frontend-green) ![Frontend Developer](https://img.shields.io/badge/Frontend%20Developer-blue)
 
-- ![Yelyzaveta Diachenko](https://img.shields.io/badge/Yelyzaveta%20Diachenko-Frontend%20Developer-blue)
-
 Ivan Korniienko - Team Lead Frontend / Frontend Developer
 Oleksandr Neverov - Team Lead Backend / Backend Developer
 Oleh Bilous - Scrum Master / Backend Developer
-Yelyzaveta Diachenko - Frontend Developer
-Pylypenko Pavlo - Frontend Developer
-Yurii Soroka - Frontend Developer
-Pavlo Bakmaiev - Frontend Developer
-Oleksandr Tsymbaliuk - Frontend Developer
-Vasyl Myroniuk - Frontend Developer
-Oleh Syvonenko - Frontend Developer
-Vitalii Sydorenko - Frontend Developer
-Savelii Helzhynskyi - Frontend Developer
+
+- ![Yelyzaveta Diachenko](https://img.shields.io/badge/Yelyzaveta%20Diachenko-Frontend%20Developer-blue)
+- ![Pavlo Pylypenko](https://img.shields.io/badge/Pavlo%20Pylypenko-Frontend%20Developer-blue)
+- ![Yurii Soroka](https://img.shields.io/badge/Yurii%20Soroka-Frontend%20Developer-blue)
+- ![Pavlo Bakmaiev](https://img.shields.io/badge/Pavlo%20Bakmaiev-Frontend%20Developer-blue)
+- ![Oleksandr Tsymbaliuk](https://img.shields.io/badge/Oleksandr%20Tsymbaliuk-Frontend%20Developer-blue)
+- ![Vasyl Myroniuk](https://img.shields.io/badge/Vasyl%20Myroniuk-Frontend%20Developer-blue)
+- ![Oleh Syvonenko](https://img.shields.io/badge/Oleh%20Syvonenko-Frontend%20Developer-blue)
+- ![Vitalii Sydorenko](https://img.shields.io/badge/Vitalii%20Sydorenko-Frontend%20Developer-blue)
+- ![Savelii Helzhynskyi](https://img.shields.io/badge/Savelii%20Helzhynskyi-Frontend%20Developer-blue)
