@@ -27,7 +27,7 @@ export const updateCardSchema = Joi.object({
   title: Joi.string().messages({
     "string.base": "Field title must be a string",
   }),
-  description: Joi.string().messages({
+  description: Joi.string().allow("").optional().messages({
     "string.base": "Field  description must be a string",
   }),
   priority: Joi.string()
