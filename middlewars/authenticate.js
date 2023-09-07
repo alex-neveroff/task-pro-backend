@@ -1,4 +1,4 @@
-import { User } from "../models/index.js";
+import { User, Session } from "../models/index.js";
 import { HttpError } from "../helpers/index.js";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
@@ -14,12 +14,21 @@ const authenticate = async (req, res, next) => {
     next(HttpError(401));
   }
   try {
-    const { id } = jwt.verify(token, JWT_SECRET);
-    const user = await User.findById(id);
-    if (!user || !user.token || user.token != token) {
+    const session = await Session.findOne({ token });
+    if (!session || !session.token || session.token != token) {
       next(HttpError(401));
     }
-    req.user = user;
+    const { id } = jwt.verify(token, JWT_SECRET);
+    const user = await User.findById(id);
+    if (!user) {
+      return next(HttpError(401));
+    }
+    const userWithToken = {
+      ...user.toObject(),
+      token: session.token,
+      display: session.display,
+    };
+    req.user = userWithToken;
     next();
   } catch {
     next(HttpError(401));

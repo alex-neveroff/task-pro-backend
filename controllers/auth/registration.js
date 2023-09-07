@@ -25,7 +25,6 @@ const register = async (req, res) => {
     id: newUser._id,
   };
   const token = jwt.sign(payload, JWT_SECRET, { expiresIn: tokenTime });
-  await User.findByIdAndUpdate(newUser._id, { token });
   await Session.create({ token, email, display });
 
   res.status(201).json({

@@ -3,14 +3,9 @@ import { HttpError, getBackground } from "../../helpers/index.js";
 import { controllerWrapper } from "../../decorators/index.js";
 
 const changeDisplay = async (req, res) => {
-  const { token, _id: owner } = req.user;
+  const { token, _id: owner, display: oldDisplay } = req.user;
   const { display: newDisplay } = req.body;
 
-  const currentSession = await Session.findOne({ token });
-  if (!currentSession) {
-    throw HttpError(404, "The session has expired. Try to relogin.");
-  }
-  const oldDisplay = currentSession ? currentSession.display : null;
   if (newDisplay && newDisplay !== oldDisplay) {
     await Session.findOneAndUpdate(
       { token },

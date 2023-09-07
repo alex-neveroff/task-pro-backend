@@ -23,13 +23,13 @@ const login = async (req, res) => {
     id: user._id,
   };
   const token = jwt.sign(payload, JWT_SECRET, { expiresIn: tokenTime });
+
   const userBoards = await Board.find({ owner: user._id });
   userBoards.forEach(async (board) => {
     const { background, _id } = board;
     const backgroundURL = await getBackground(background, display);
     await Board.findByIdAndUpdate(_id, { backgroundURL });
   });
-  await User.findByIdAndUpdate(user._id, { token });
   await Session.create({ token, email, display });
 
   res.json({
